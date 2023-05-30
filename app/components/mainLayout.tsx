@@ -14,6 +14,7 @@ import TwitterLight from "../../public/Twitter_light.svg";
 import TwitterDark from "../../public/Twitter_dark.svg";
 import MenuComponent from "./menu";
 import MenuButton from "./menuButton";
+import { motion } from "framer-motion";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
   const { colors, theme } = useThemeContext();
@@ -67,30 +68,48 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         } border-r-[1px]`}
       >
         <div className="flex justify-center items-center gap-[30px] flex-col">
-          <div className="relative w-[28px] h-[28px] cursor-pointer">
+          <motion.a 
+          href="https://github.com/fabiodinota"
+          target="_blank"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", damping: 20, stiffness: 300 }}
+          className="relative w-[28px] h-[28px] cursor-pointer">
             <Image
               src={theme === "dark" ? GithubDark : GithubLight}
               alt="Fabio Di Nota"
               fill
               className="object-contain"
             />
-          </div>
-          <div className="relative w-[28px] h-[28px] cursor-pointer">
+          </motion.a>
+          <motion.a 
+          href="https://linkedin.com/in/fabiodinota"
+          target="_blank"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", damping: 20, stiffness: 300 }}
+          className="relative w-[28px] h-[28px] cursor-pointer">
             <Image
               src={theme === "dark" ? LinkedinDark : LinkedinLight}
               alt="Fabio Di Nota"
               fill
               className="object-contain"
             />
-          </div>
-          <div className="relative w-[28px] h-[28px] cursor-pointer">
+          </motion.a>
+          <motion.a 
+          href="https://twitter.com/fabiodinota"
+          target="_blank"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", damping: 20, stiffness: 300 }}
+          className="relative w-[28px] h-[28px] cursor-pointer">
             <Image
               src={theme === "dark" ? TwitterDark : TwitterLight}
               alt="Fabio Di Nota"
               fill
               className="object-contain"
             />
-          </div>
+          </motion.a>
         </div>
       </div>
       <div
@@ -98,14 +117,13 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           menuOpen ? "overflow-y-hidden " : "overflow-y-scroll"
         } flex justify-start items-start`}
       >
-        {menuOpen && (
           <MenuComponent
+            menuOpen={menuOpen}
             theme={theme}
             colors={colors}
             onClick={() => setMenuOpen(!menuOpen)}
           />
-        )}
-        {!menuOpen && children}
+        {children}
       </div>
       <div
         className={`hidden xl:block ${

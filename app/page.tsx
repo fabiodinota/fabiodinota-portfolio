@@ -7,8 +7,8 @@ export default function Home() {
   const { theme, colors } = useThemeContext();
 
   return (
-    <div className={`h-[2000px] w-full`}>
-      <h1 className={`${colors.primary}`}>Home</h1>
+    <div className={`h-full w-full flex justify-center items-center `}>
+      <h1 className={`${colors.primary} text-2xl`}>Home</h1>
     </div>
   );
 }

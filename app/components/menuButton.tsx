@@ -26,9 +26,9 @@ const MenuButton = ({
     const Close = "Close";
   
     const variant = {
-      initial: { y: -22, display: "block", transitionEnd: { display: "none" } },
+      initial: { y: -22, display: "block" },
       animate: { y: 0 },
-      exit: { y: 20, display: "block", transitionEnd: { display: "none" } },
+      exit: { y: 20, display: "block" },
     };
   
     const menuIconVariant = {
