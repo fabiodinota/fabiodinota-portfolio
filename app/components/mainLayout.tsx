@@ -26,11 +26,10 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
     setMenuOpen(!menuOpen);
   };
 
-  const height = window.innerHeight;
 
   return (
     <main
-      className={`${colors.background} grid grid-rows-[75px_1fr_75px] grid-cols-[75px_1fr_75px] xl:grid-rows-[100px_1fr_100px] xl:grid-cols-[150px_1fr_150px] sm:h-[${height}px] h-[100vh] w-full row place-content-center`}
+      className={`${colors.background} grid grid-rows-[75px_1fr_75px] grid-cols-[75px_1fr_75px] xl:grid-rows-[100px_1fr_100px] xl:grid-cols-[150px_1fr_150px] h-[100vh] w-full row place-content-center`}
     >
       <div
         className={`${
