@@ -26,7 +26,6 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
     setMenuOpen(!menuOpen);
   };
 
-
   return (
     <main
       className={`${colors.background} grid grid-rows-[75px_1fr_75px] grid-cols-[75px_1fr_75px] xl:grid-rows-[100px_1fr_100px] xl:grid-cols-[150px_1fr_150px] h-[100vh] w-full row place-content-center`}
@@ -68,13 +67,14 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
         } border-r-[1px]`}
       >
         <div className="flex justify-center items-center gap-[30px] flex-col">
-          <motion.a 
-          href="https://github.com/fabiodinota"
-          target="_blank"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", damping: 20, stiffness: 300 }}
-          className="relative w-[28px] h-[28px] cursor-pointer">
+          <motion.a
+            href="https://github.com/fabiodinota"
+            target="_blank"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            className="relative w-[28px] h-[28px] cursor-pointer"
+          >
             <Image
               src={theme === "dark" ? GithubDark : GithubLight}
               alt="Fabio Di Nota"
@@ -82,13 +82,14 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
               className="object-contain"
             />
           </motion.a>
-          <motion.a 
-          href="https://linkedin.com/in/fabiodinota"
-          target="_blank"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", damping: 20, stiffness: 300 }}
-          className="relative w-[28px] h-[28px] cursor-pointer">
+          <motion.a
+            href="https://linkedin.com/in/fabiodinota"
+            target="_blank"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            className="relative w-[28px] h-[28px] cursor-pointer"
+          >
             <Image
               src={theme === "dark" ? LinkedinDark : LinkedinLight}
               alt="Fabio Di Nota"
@@ -96,13 +97,14 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
               className="object-contain"
             />
           </motion.a>
-          <motion.a 
-          href="https://twitter.com/fabiodinota"
-          target="_blank"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", damping: 20, stiffness: 300 }}
-          className="relative w-[28px] h-[28px] cursor-pointer">
+          <motion.a
+            href="https://twitter.com/fabiodinota"
+            target="_blank"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            className="relative w-[28px] h-[28px] cursor-pointer"
+          >
             <Image
               src={theme === "dark" ? TwitterDark : TwitterLight}
               alt="Fabio Di Nota"
@@ -117,12 +119,12 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           menuOpen ? "overflow-y-hidden " : "overflow-y-scroll"
         } flex justify-start items-start`}
       >
-          <MenuComponent
-            menuOpen={menuOpen}
-            theme={theme}
-            colors={colors}
-            onClick={() => setMenuOpen(!menuOpen)}
-          />
+        <MenuComponent
+          menuOpen={menuOpen}
+          theme={theme}
+          colors={colors}
+          onClick={() => setMenuOpen(!menuOpen)}
+        />
         {children}
       </div>
       <div
