@@ -1,10 +1,9 @@
 import "./globals.css";
 import { Outfit } from "next/font/google";
 import { Metadata } from "next";
-import { use, useContext } from "react";
-import { ThemeProvider, useThemeContext } from "./context/themeContext";
-import ThemeSwitch from "./components/themeSwitch";
+import { ThemeProvider } from "./context/themeContext";
 import MainLayout from "./components/mainLayout";
+import PageTransition from "./components/pageTransition";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -39,16 +38,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider>
       <html lang="en">
         <body className={`${outfit.className} `}>
-          <MainLayout>{children}</MainLayout>
+            <MainLayout>
+                <PageTransition>
+                    {children}
+                </PageTransition>
+            </MainLayout>
         </body>
       </html>
     </ThemeProvider>

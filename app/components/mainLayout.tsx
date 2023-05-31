@@ -14,9 +14,13 @@ import TwitterLight from "../../public/Twitter_light.svg";
 import TwitterDark from "../../public/Twitter_dark.svg";
 import MenuComponent from "./menu";
 import MenuButton from "./menuButton";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
+  const pathname = usePathname();
+  
   const { colors, theme } = useThemeContext();
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +28,35 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 
   const handleMenuClick = () => {
     setMenuOpen(!menuOpen);
+  };
+
+
+
+  const PageTransitionVariant = {
+    initial: {
+      opacity: 0,
+      scale: 0.95,
+      blur: 50,
+    },
+    animate: {
+      scale: 1, 
+      blur: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0, 0.5, 0.42, 0.99],
+        type: "just",
+      },
+    },
+    exit: {
+      blur: 50,
+      opacity: 0,
+      scale: 1.05,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    },
   };
 
   return (
@@ -125,7 +158,18 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           colors={colors}
           onClick={() => setMenuOpen(!menuOpen)}
         />
-        {children}
+        <AnimatePresence mode="wait">
+          <motion.div
+            variants={PageTransitionVariant}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="w-full h-full"
+            key={pathname}           
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
       </div>
       <div
         className={`hidden xl:block ${
