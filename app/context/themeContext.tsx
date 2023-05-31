@@ -41,8 +41,6 @@ const ThemeContext = createContext<ThemeContextProps>({
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setTheme] = useState("dark");
 
-  console.log(theme);
-
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 

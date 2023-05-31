@@ -24,7 +24,6 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   const { colors, theme } = useThemeContext();
 
   const [menuOpen, setMenuOpen] = useState(false);
-  console.log(menuOpen);
 
   const handleMenuClick = () => {
     setMenuOpen(!menuOpen);
