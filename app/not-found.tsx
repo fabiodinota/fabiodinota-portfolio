@@ -6,9 +6,12 @@ import { useThemeContext } from "./context/themeContext";
 import Image from "next/image";
 import ArrowDark from "../public/Arrow_dark.svg";
 import ArrowLight from "../public/Arrow_light.svg";
+import { useRouter } from "next/navigation";
 
 function NotFound() {
   const { theme, colors } = useThemeContext();
+
+  const router = useRouter();
 
   return (
     <div className="w-full h-full flex justify-center items-start flex-col pl-[30px] pr-[30px] sm:pl-[50px]">
@@ -28,8 +31,8 @@ function NotFound() {
         If this is a bug, please reach out to me!
       </span>
       <div className="flex-col w-full sm:flex-row flex gap-[20px] pt-4">
-        <Link
-          href={"/"}
+        <button
+          onClick={router.back}
           className={`flex flex-row justify-center items-center ${
             colors.primary
           } font-extralight w-full sm:w-[150px] py-3 border-[1px] gap-[10px] ${
@@ -45,7 +48,7 @@ function NotFound() {
             />
           </span>
           Go Back
-        </Link>
+        </button>
         <Link
           href={"/contact"}
           className={`${

@@ -18,7 +18,7 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
           blur: 0,
           opacity: 1,
           transition: {
-            duration: 0.5,
+            duration: 0.3,
             ease: [0, 0.5, 0.42, 0.99],
             type: "just",
           },
@@ -28,7 +28,7 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
           opacity: 0,
           scale: 1.05,
           transition: {
-            duration: 0.5,
+            duration: 0.3,
             ease: "easeOut"
           }
         },

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { AnimatePresence, color, motion } from "framer-motion";
-import { type } from "os";
+import { useRouter } from "next/navigation";
 
 interface MenuProps {
   colors: {
@@ -88,6 +88,10 @@ const MenuComponent = ({ colors, onClick, theme, menuOpen }: MenuProps) => {
     },
   };
 
+  const router = useRouter();
+
+  
+
   return (
     <AnimatePresence mode="wait">
       {menuOpen && (
@@ -109,6 +113,7 @@ const MenuComponent = ({ colors, onClick, theme, menuOpen }: MenuProps) => {
             >
               <Link
                 href={item.link}
+                onError={() => console.log("error")}
                 onClick={onClick}
                 className={`text-[42px] sm:text-[50px] xl:text-[60px] `}
               >
