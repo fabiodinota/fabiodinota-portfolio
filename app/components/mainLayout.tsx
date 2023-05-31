@@ -155,7 +155,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           menuOpen={menuOpen}
           theme={theme}
           colors={colors}
-          onClick={() => setMenuOpen(!menuOpen)}
+          //onClick={() => setMenuOpen(!menuOpen)}
         />
         <AnimatePresence mode="wait">
           <motion.div

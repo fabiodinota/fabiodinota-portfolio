@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { AnimatePresence, color, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 interface MenuProps {
@@ -11,12 +11,11 @@ interface MenuProps {
     border: string;
     red: string;
   };
-  onClick: () => void;
   theme: string;
   menuOpen: boolean;
 }
 
-const MenuComponent = ({ colors, onClick, theme, menuOpen }: MenuProps) => {
+const MenuComponent = ({ colors, theme, menuOpen }: MenuProps) => {
   const MenuItems = [
     {
       text: "Home",
@@ -114,7 +113,7 @@ const MenuComponent = ({ colors, onClick, theme, menuOpen }: MenuProps) => {
               <Link
                 href={item.link}
                 onError={() => console.log("error")}
-                onClick={onClick}
+               // onClick={onClick}
                 className={`text-[42px] sm:text-[50px] xl:text-[60px] `}
               >
                 <span className={`font-semibold ${colors.primary}`}>
