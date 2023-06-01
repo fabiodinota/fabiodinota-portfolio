@@ -23,19 +23,9 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
             type: "just",
           },
         },
-        exit: {
-          blur: 50,
-          opacity: 0,
-          scale: 1.05,
-          transition: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        },
       };
 
   return (
-    <AnimatePresence mode="wait">
           <motion.div
             variants={PageTransitionVariant}
             initial="initial"
@@ -45,7 +35,6 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
           >
             {children}
           </motion.div>
-        </AnimatePresence>
   )
 }
 
