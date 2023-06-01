@@ -157,18 +157,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
           colors={colors}
           //onClick={() => setMenuOpen(!menuOpen)}
         />
-        <AnimatePresence mode="wait">
-          <motion.div
-            variants={PageTransitionVariant}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="w-full h-full"
-            key={pathname}           
-          >
             {children}
-          </motion.div>
-        </AnimatePresence>
       </div>
       <div
         className={`hidden xl:block ${
