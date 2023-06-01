@@ -26,7 +26,6 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
       };
 
   return (
-    <AnimatePresence mode="wait">
           <motion.div
             variants={PageTransitionVariant}
             initial="initial"
@@ -36,7 +35,6 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
           >
             {children}
           </motion.div>
-        </AnimatePresence>
   )
 }
 
