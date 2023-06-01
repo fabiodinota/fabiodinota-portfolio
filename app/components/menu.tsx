@@ -98,7 +98,7 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
 					animate="animate"
 					exit="exit"
 					variants={MenuVariant}
-					className={`absolute ${colors.background} top-0 left-0 w-full h-full flex flex-col justify-start items-stretch`}
+					className={`absolute z-50 ${colors.background} top-0 left-0 w-full h-full flex flex-col justify-start items-stretch`}
 				>
 					{MenuItems.map((item, index) => (
 						<motion.div
