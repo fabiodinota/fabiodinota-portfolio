@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 body {
-  overflow-y: hidden;
+	overflow-y: hidden;
 }
 
 @layer components {
-  .background-white {
-    background: linear-gradient(67.72deg, #f0eceb 1.15%, #dedede 94.33%),
-      #ffffff;
-  }
-  .background-black {
-    background: #151515;
-  }
+	.background-white {
+		background: linear-gradient(67.72deg, #f0eceb 1.15%, #dedede 94.33%),
+			#ffffff;
+	}
+	.background-black {
+		background: #151515;
+	}
 }
