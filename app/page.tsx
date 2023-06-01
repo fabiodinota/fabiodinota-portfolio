@@ -35,7 +35,7 @@ export default function Home() {
         </div>
         {/* TODO: Work on Marquee sizes */}
         <div className={`h-full ${colors.border} border-t-[1px] w-full xl:w-[50%] overflow-x-clip`}>
-          <Marquee play={false} autoFill style={{ rowGap: 20, gap: 20}} className="p-5 flex h-full flex-row gap-5 w-full">
+          {/* <Marquee play={false} autoFill style={{ rowGap: 20, gap: 20}} className="p-5 flex h-full flex-row gap-5 w-full">
             <div className={`h-full w-full border-[1px] ${colors.border}`}>
               <Image src={placeholder} alt="placeholder" />
               <div className={`w-full flex justify-between items-center flex-row px-5 py-4 border-t-[1px] ${colors.border}`}>
@@ -48,7 +48,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-          </Marquee>
+          </Marquee> */}
         </div>
       </div>
     </div>
