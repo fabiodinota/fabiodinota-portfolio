@@ -23,15 +23,6 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
             type: "just",
           },
         },
-        exit: {
-          blur: 50,
-          opacity: 0,
-          scale: 1.05,
-          transition: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        },
       };
 
   return (
@@ -40,7 +31,6 @@ const PageTransition = ({ children } : { children: ReactNode }) => {
             variants={PageTransitionVariant}
             initial="initial"
             animate="animate"
-            exit="exit"
             className='h-full w-full'
             key={pathname}           
           >
