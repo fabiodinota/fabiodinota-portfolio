@@ -149,26 +149,15 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
       <div
         className={`relative col-span-2 xl:col-span-1 ${
           menuOpen ? "overflow-y-hidden " : "overflow-y-scroll"
-        } flex justify-start items-start`}
+        } flex justify-start items-start h-full w-full`}
       >
         <MenuComponent
           menuOpen={menuOpen}
           theme={theme}
           colors={colors}
-          //onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => setMenuOpen(!menuOpen)}
         />
-        <AnimatePresence mode="wait">
-          <motion.div
-            variants={PageTransitionVariant}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="w-full h-full"
-            key={pathname}           
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
+          {children}
       </div>
       <div
         className={`hidden xl:block ${

@@ -12,10 +12,11 @@ interface MenuProps {
     red: string;
   };
   theme: string;
+  onClick: () => void;
   menuOpen: boolean;
 }
 
-const MenuComponent = ({ colors, theme, menuOpen }: MenuProps) => {
+const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
   const MenuItems = [
     {
       text: "Home",
@@ -113,7 +114,7 @@ const MenuComponent = ({ colors, theme, menuOpen }: MenuProps) => {
               <Link
                 href={item.link}
                 onError={() => console.log("error")}
-               // onClick={onClick}
+                onClick={onClick}
                 className={`text-[42px] sm:text-[50px] xl:text-[60px] `}
               >
                 <span className={`font-semibold ${colors.primary}`}>
