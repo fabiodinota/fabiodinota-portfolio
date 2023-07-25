@@ -21,7 +21,7 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 	const Close = "Close";
 
 	const variant = {
-		initial: { y: -22, display: "block" },
+		initial: { y: -23, display: "block" },
 		animate: { y: 0 },
 		exit: { y: 20, display: "block" },
 	};
