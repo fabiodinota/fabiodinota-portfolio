@@ -6,10 +6,10 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import placeholder from "../public/Placeholder.png";
 import HomeProjectComponent from "./components/homeProjectComponent";
-import Beyond from "../public/Beyond.png";
-import Azurite from "../public/Azurite.png";
-import Qillobyte from "../public/Qillobyte.png";
-import Jouri from "../public/Jouri.png";
+import Beyond from "../public/beyond.png";
+import Azurite from "../public/azurite.png";
+import Qillobyte from "../public/qillobyte.png";
+import Jouri from "../public/jouri.png";
 
 export default function Home() {
 	const { theme, colors, border } = useThemeContext();
