@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useThemeContext } from "../context/themeContext";
 import Image from "next/image";
 import Placeholder_light from "../../public/About_main.png";
@@ -20,6 +20,15 @@ function About() {
     const [isOpen, setIsOpen] = useState<number>(0);
 
     const [isOpenBig, setIsOpenBig] = useState<boolean>(true);
+
+    const [disabled, setDisabled] = useState<boolean>(false);
+
+    useEffect(() => {
+        setDisabled(true);
+        setTimeout(() => {
+            setDisabled(false);
+        }, 800);
+    }, [isOpen]);
     
 	return (
         <div className="flex flex-col w-full overflow-y-hidden items-center lg:justify-between h-full relative">
@@ -52,7 +61,7 @@ function About() {
                 </div>
             </div>
             <div 
-                onClick={() => setIsOpen(0)}
+                onClick={() => disabled ? null : setIsOpen(0)}
                 className={`${isOpen === 0 ? "h-full" : "h-[80px] flex-shrink-0"} transition-all duration-1000 custom-ease lg:hidden flex w-full flex-col justify-start items-center relative z-10 top-0`}
             >
                 <div className={`w-full absolute z-10 top-0 left-0  flex items-center justify-between flex-shrink-0 flex-grow-0 h-[80px] px-[30px] border-b-[1px] ${colors.background} ${border} ${colors.primary}`}>
@@ -84,7 +93,7 @@ function About() {
                 </div>
             </div>
             <div 
-                onClick={() => setIsOpen(1)}
+                onClick={() => disabled ? null : setIsOpen(1)}
                 className={`${isOpen === 1 ? "h-full overflow-y-scroll" : "h-[80px] flex-shrink-0"} transition-all duration-1000 custom-ease  lg:hidden flex w-full flex-col justify-start items-center relative z-20 top-0`}
             >
                 <div className={`w-full absolute z-20 top-0 left-0 flex items-center justify-between flex-shrink-0 flex-grow-0 h-[80px] px-[30px] 
@@ -131,7 +140,7 @@ function About() {
                 </div>
             </div>
             <div 
-                onClick={() => setIsOpen(2)}
+                onClick={() => disabled ? null : setIsOpen(2)}
                 className={`${isOpen === 2 ? "h-full overflow-y-scroll" : "h-[80px] flex-shrink-0"} transition-all duration-1000 custom-ease lg:hidden flex w-full flex-col justify-start items-center relative z-30 top-0`}
             >
                 <div className={`w-full absolute z-30 top-0 left-0 flex items-center justify-between flex-shrink-0 flex-grow-0 h-[80px] px-[30px] border-t-[1px] ${isOpen === 2 ? "border-bottom-animation" : "border-bottom-animation-out"}   ${colors.background} ${border} ${colors.primary}`}>
