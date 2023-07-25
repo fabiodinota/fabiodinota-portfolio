@@ -14,6 +14,11 @@ module.exports = {
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
 		},
+        screens: {
+            'xs': '475px',
+            ...require('tailwindcss/defaultConfig').theme.screens,
+            '2xl': '1440px',
+        },
 	},
 	plugins: [],
 };

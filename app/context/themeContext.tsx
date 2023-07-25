@@ -24,6 +24,7 @@ interface ThemeContextProps {
 		border: string;
 		red: string;
 	};
+    border: string;
 }
 
 const ThemeContext = createContext<ThemeContextProps>({
@@ -36,6 +37,7 @@ const ThemeContext = createContext<ThemeContextProps>({
 		border: "",
 		red: "",
 	},
+    border: "",
 });
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
@@ -65,14 +67,15 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 		primary: "text-white",
 		secondary: "text-white opacity-50",
 		background: "background-black",
-		border: "oultine-white",
+		border: "outline-white",
 		red: "text-[#FE4C4C]",
 	};
 
 	const colors = theme === "dark" ? DarkMode : LightMode;
+    const border = theme === "dark" ? "border-white" : "border-black"
 
 	return (
-		<ThemeContext.Provider value={{ theme, setTheme, colors }}>
+		<ThemeContext.Provider value={{ theme, setTheme, colors, border }}>
 			{children}
 		</ThemeContext.Provider>
 	);

@@ -2,11 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	overflow-y: hidden;
+
+::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
+    background-color: transparent;
 }
 
 @layer components {
+    body{
+        @apply h-screen w-screen overflow-y-hidden;
+    }
 	.background-white {
 		background: linear-gradient(67.72deg, #f0eceb 1.15%, #dedede 94.33%),
 			#ffffff;
@@ -14,4 +20,31 @@ body {
 	.background-black {
 		background: #151515;
 	}
+    .border-bottom-animation {
+        border-bottom-width: 1px;
+        animation-duration: 1000ms;
+        transition-duration: 1000ms;
+        transition-property: border-top-width, border-bottom-width;
+    }
+    .border-bottom-animation-out{
+        border-bottom-width: 0px;
+        animation-duration: 1000ms;
+        transition-duration: 1000ms;
+        transition-property: border-top-width, border-bottom-width;
+    }
+    .border-top-animation{
+        border-top-width: 1px;
+        animation-duration: 1000ms;
+        transition-duration: 1000ms;
+        transition-property: border-top-width, border-bottom-width;
+    }
+    .border-top-animation-out{
+        border-top-width: 0px;
+        animation-duration: 1000ms;
+        transition-duration: 1000ms;
+        transition-property: border-top-width, border-bottom-width;
+    }
+    .custom-ease{
+        @apply ease-[cubic-bezier(0.200,0.005,0.000,0.995)]
+    }
 }

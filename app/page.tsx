@@ -5,66 +5,86 @@ import { useThemeContext } from "./context/themeContext";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import placeholder from "../public/Placeholder.png";
+import HomeProjectComponent from "./components/homeProjectComponent";
+import Beyond from "../public/Beyond.png";
+import Azurite from "../public/Azurite.png";
+import Qillobyte from "../public/Qillobyte.png";
+import Jouri from "../public/Jouri.png";
 
 export default function Home() {
-	const { theme, colors } = useThemeContext();
-
-    const border = theme === "dark" ? "border-white" : "border-black"
+	const { theme, colors, border } = useThemeContext();
 
 	return (
 		<div className="w-full h-full">
-			<div className="h-[45%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
+			<div className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
 				<h1
-					className={`text-[70px] sm:text-[80px] xl:text-[100px] font-semibold ${colors.primary} leading-tight`}
+					className={`text-[60px] xs:text-[70px] sm:text-[80px] xl:text-[100px] font-semibold ${colors.primary} leading-none whitespace-nowrap`}
 				>
 					Fabio{" "}
-					<span className="block md:inline">
+					<span className="block md:inline whitespace-nowrap">
 						Di Nota
 						<span className={`${colors.red} inline-flex`}>.</span>
 					</span>
 				</h1>
 				<p
-					className={` ${colors.primary} text-[34px] sm:text-[40px] xl:text-[64px] flex flex-col leading-none`}
+					className={` ${colors.primary} text-[30px] xs:text-[34px] sm:text-[40px] xl:text-[64px] flex flex-col leading-none`}
 				>
 					<span className="font-light">Software Engineer</span>
 					<span className="font-thin">& Designer</span>
 				</p>
 			</div>
-			<div className="h-[55%] xl:h-[40%] flex flex-col-reverse xl:flex-row">
+			<div className="h-[60%] xl:h-[40%] flex flex-col-reverse xl:flex-row">
 				<div
-					className={`h-full ${border} border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%] flex justify-center items-center flex-col p-5 gap-5`}
+					className={`h-[70%] xl:h-full ${border} border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%] flex justify-center items-center flex-col p-5 gap-5`}
 				>
 					<Link
-						className={`w-full h-full border-[1px] ${border} ${colors.primary} text-[16px] md:text-[20px] font-extralight flex justify-center items-center`}
+						className={`w-full h-full border-[1px] ${border} ${colors.primary} text-[16px] group md:text-[20px] font-extralight flex justify-center items-center`}
 						href="/projects"
 					>
-						Projects
+						<p className="group-hover:underline duration-200">Projects</p>
 					</Link>
 					<Link
-						className={`w-full h-full border-[1px] ${border} ${colors.primary} text-[16px] md:text-[20px] font-extralight flex justify-center items-center`}
+						className={`w-full h-full border-[1px] ${border} ${colors.primary} text-[16px] group md:text-[20px] font-extralight flex justify-center items-center`}
 						href="/contact"
 					>
-						Contact Me
+						<p className="group-hover:underline duration-200">Contact Me</p>
 					</Link>
 				</div>
 				{/* TODO: Work on Marquee sizes */}
 				<div
-					className={`h-full ${border} border-t-[1px] w-full xl:w-[50%] overflow-x-clip`}
+					className={` ${border} border-t-[1px] w-full flex justify-center items-center xl:w-[50%]`}
 				>
-					{/* <Marquee play={false} autoFill style={{ rowGap: 20, gap: 20}} className="p-5 flex h-full flex-row gap-5 w-full">
-            <div className={`h-full w-full border-[1px] ${border}`}>
-              <Image src={placeholder} alt="placeholder" />
-              <div className={`w-full flex justify-between items-center flex-row px-5 py-4 border-t-[1px] ${border}`}>
-                <div className="flex justify-center items-start flex-col">
-                  <h4 className={`font-extralight ${colors.primary} text-[20px]`}>Beyond Vision LTD</h4>
-                  <p className={`font-extralight ${colors.primary} text-[14px]`}>Design & Development</p>
-                </div>
-                 <Link className={`px-8 border-[1px] py-3 grid place-content-center h-max ${border} ${colors.primary}`} href={"/"}>
-                  View
-                </Link>
-              </div>
-            </div>
-          </Marquee> */}
+				    <Marquee play={true} className="h-min p-5">
+                        <HomeProjectComponent
+                            border={border}
+                            title="Beyond Vision"
+                            description="Design & Development"
+                            link="/"
+                            image={Beyond}
+                        />
+                        <HomeProjectComponent
+                            border={border}
+                            title="Azurite Studios"
+                            description="Website Development"
+                            link="/"
+                            image={Azurite}
+                        />
+                        <HomeProjectComponent
+                            border={border}
+                            title="Qillobyte"
+                            description="Website Development"
+                            link="/"
+                            image={Qillobyte}
+                        />
+                        <HomeProjectComponent
+                            border={border}
+                            title="Jouri De Ligt"
+                            description="UI/UX Design"
+                            link="/"
+                            image={Jouri}
+                        />
+                        
+                    </Marquee>
 				</div>
 			</div>
 		</div>
