@@ -48,3 +48,12 @@
         @apply ease-[cubic-bezier(0.200,0.005,0.000,0.995)]
     }
 }
+
+@layer utilities{
+    .h-screen {
+        height: 100lvh;
+      }
+      .min-h-screen {
+        min-height: 100lvh;
+      }
+}
