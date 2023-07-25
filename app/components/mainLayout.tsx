@@ -81,7 +81,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 			<div
 				className={`${
 					theme === "dark" ? "border-white" : "border-black"
-				} cursor-pointer border-b-[1px] xl:border-l-[1px] flex-row  flex justify-end xl:justify-center pr-[30px] xl:pr-0 items-center gap-[10px] col-span-2 xl:col-span-1`}
+				} border-b-[1px] xl:border-l-[1px] flex-row  flex justify-end xl:justify-center pr-[30px] xl:pr-0 items-center gap-[10px] col-span-2 xl:col-span-1`}
 			>
 				<MenuButton
 					theme={theme}
