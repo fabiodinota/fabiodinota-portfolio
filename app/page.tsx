@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useThemeContext } from "./context/themeContext";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
-import placeholder from "../public/Placeholder.png";
 import HomeProjectComponent from "./components/homeProjectComponent";
 import Beyond from "../public/beyond.png";
 import Azurite from "../public/azurite.png";

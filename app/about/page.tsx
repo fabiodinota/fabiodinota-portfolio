@@ -76,7 +76,7 @@ function About() {
                                 Let&apos;s make something awesome together!
                         </p>
                         <div
-                            className="hidden xs:block mt-6 flex-grow w-full xl:w-[400px] pb-10 relative h-full min-h-[400px] xl:h-[400px] z-auto"
+                            className="hidden xs:block mt-6 flex-grow w-full lg:w-[400px] pb-10 relative h-full min-h-[400px] lg:h-[400px] z-auto"
                         >
                             <Image src={theme === "dark" ? Placeholder_dark : Placeholder_light } quality={100} fill className="object-contain relative z-0" alt="map" />
                         </div>
