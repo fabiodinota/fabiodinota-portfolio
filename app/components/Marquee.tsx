@@ -1,10 +1,10 @@
 import React from 'react'
 import HomeProjectComponent from './homeProjectComponent'
 import { useThemeContext } from '../context/themeContext';
-import Beyond from '../../public/Beyond.png'
-import Azurite from '../../public/Azurite.png'
-import Qillobyte from '../../public/Qillobyte.png'
-import Jouri from '../../public/Jouri.png'
+import Beyond from '../../public/beyond.png'
+import Azurite from '../../public/azurite.png'
+import Qillobyte from '../../public/qillobyte.png'
+import Jouri from '../../public/jouri.png'
 
 const Marquee = () => {
     const { colors, border } = useThemeContext();

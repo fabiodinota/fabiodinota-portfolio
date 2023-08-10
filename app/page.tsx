@@ -1,14 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useThemeContext } from "./context/themeContext";
 import Link from "next/link";
-import HomeProjectComponent from "./components/homeProjectComponent";
-import Beyond from "../public/beyond.png";
-import Azurite from "../public/azurite.png";
-import Qillobyte from "../public/qillobyte.png";
-import Jouri from "../public/jouri.png";
-import { useEffect, useRef } from "react";
 import Marquee from "./components/Marquee";
 
 export default function Home() {
