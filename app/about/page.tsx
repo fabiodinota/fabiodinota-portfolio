@@ -31,8 +31,8 @@ function About() {
     }, [isOpen]);
     
 	return (
-        <div className="flex flex-col w-full overflow-y-hidden items-center lg:justify-between h-full relative">
-            <div className={`lg:flex justify-center items-center flex-wrap md:flex-nowrap p-5 md:p-10 py-5 xl:gap-5 flex-row h-[60%] lg:h-full hidden flex-grow-0 custom-ease duration-700  ${isOpenBig ? "scale-100" : "xl:scale-110"}`}>
+        <div className="flex flex-col w-full overflow-hidden items-center lg:justify-between h-full relative">
+            <div className={`lg:flex justify-center items-center flex-wrap md:flex-nowrap p-5 md:p-10 py-5 xl:gap-5 flex-row h-[50%] lg:h-full hidden flex-grow-0 custom-ease duration-700 overflow-x-hidden  ${isOpenBig ? "scale-110 lg:max-xl:scale-90" : "lg:max-xl:scale-100 xl:scale-[1.15] 2xl:scale-125"}`}>
                 <div
                 className={`max-w-[900px] md:max-w-none w-[100%] xl:w-[50%] xl:pb-0 max-h-[450px] pr-5 flex justify-start lg:justify-center items-start flex-col ${colors.primary}`}
                 >
@@ -40,22 +40,22 @@ function About() {
                         About Me
                     </h1>
                     <p className="sm:text-justify sm:pb-0 font-extralight">
-                        Hey there, I&apos;m a software engineer and designer based in Antwerp, Belgium. I&apos;m passionate about
-                        all things tech, and you&apos;ll often find me doodling ideas in my sketchbook or tinkering with code in my free time.
+                        I&apos;m a tech-savvy software engineer and designer from Antwerp, 
+                        Belgium. I&apos;m passionate about all things tech and love doodling 
+                        ideas and coding in my free time. 
                         <br />
                         <br />
-                        I&apos;ve been lucky enough to work with a wide range of languages and technologies, including JavaScript, Typescript, 
-                        React, Next.js and more. I&apos;m also pretty handy with design tools like Figma, Illustrator, and Photoshop, and have 
-                        experience with video and animation software like After Effects and Premiere Pro.
+                        I have experience with JavaScript, Typescript, React, Next.js, and 
+                        various design tools like Figma, Illustrator, and Photoshop, along 
+                        with video and animation software. 
                         <br />
                         <br />
-                        While I don&apos;t like to brag too much, I&apos;m always up for a challenge and love taking on new projects. So if 
-                        you&apos;re looking for a creative problem-solver who&apos;s up-to-date with the latest tech, feel free to reach out. 
-                        Let&apos;s make something awesome together!
+                        I enjoy taking on new challenges and would be thrilled to collaborate 
+                        on exciting projects. Let&apos;s create something awesome together!
                     </p>
                 </div>
                 <div
-                className="hidden sm:block flex-grow w-full xl:w-[400px] relative h-full min-h-[400px] xl:h-[400px] xl:flex-grow-0 z-auto"
+                className="hidden sm:block flex-grow w-full xl:w-[350px] relative h-full min-h-[300px] max-h-[400px] xl:h-[350px] xl:flex-grow-0 z-auto"
                 >
                     <Image src={theme === "dark" ? Placeholder_dark : Placeholder_light } quality={100} fill className="object-contain relative z-0" alt="map" />
                 </div>

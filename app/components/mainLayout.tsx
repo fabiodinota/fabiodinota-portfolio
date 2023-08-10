@@ -16,6 +16,7 @@ import MenuComponent from "./menu";
 import MenuButton from "./menuButton";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
 	const pathname = usePathname();
@@ -64,14 +65,14 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 					theme === "dark" ? "border-white" : "border-black"
 				} border-b-[1px] border-r-[1px] flex justify-center items-center`}
 			>
-				<div className="relative w-[24px] h-[36px] right-[3px]">
+				<Link href="/" className="relative w-[24px] h-[36px] right-[3px]">
 					<Image
 						src={theme === "dark" ? LogoDark : LogoLight}
 						alt="Fabio Di Nota"
 						fill
 						className="object-contain"
 					/>
-				</div>
+				</Link>
 			</div>
 			<div
 				className={` hidden xl:block ${

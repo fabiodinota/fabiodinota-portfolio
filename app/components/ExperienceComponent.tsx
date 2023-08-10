@@ -13,7 +13,7 @@ interface ExperienceComponentProps {
 const ExperienceComponent = ({ title, description, Logo, link }: ExperienceComponentProps) => {
     const { colors, border } = useThemeContext();
   return (
-    <div className={`w-full flex flex-row  border-[1px] ${border} ${colors.primary}`}>
+    <div className={`w-full flex flex-row  border ${border} ${colors.primary}`}>
         <div className={`relative aspect-square w-20 flex-shrink-0 border-r-[1px] ${border}`}>
             <Image src={Logo} quality={100} fill className="object-cover object-center relative z-0" alt="map" />
         </div>

@@ -35,7 +35,7 @@ function NotFound() {
 					onClick={router.back}
 					className={`flex flex-row justify-center items-center ${
 						colors.primary
-					} font-extralight w-full sm:w-[150px] py-3 border-[1px] gap-[10px] ${
+					} font-extralight w-full sm:w-[150px] py-3 border gap-[10px] ${
 						theme === "dark" ? "border-white" : "border-black"
 					}`}
 				>
@@ -53,7 +53,7 @@ function NotFound() {
 					href={"/contact"}
 					className={`${
 						colors.primary
-					} font-extralight w-full sm:w-[150px] items-center justify-center flex py-3 border-[1px] ${
+					} font-extralight w-full sm:w-[150px] items-center justify-center flex py-3 border ${
 						theme === "dark" ? "border-white" : "border-black"
 					}`}
 				>

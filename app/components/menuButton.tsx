@@ -32,7 +32,7 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 	};
 	return (
 		<div
-			className="flex flex-row items-center gap-[10px]"
+			className="flex flex-row items-center gap-[10px] cursor-pointer"
 			onClick={onClick}
 		>
 			<svg

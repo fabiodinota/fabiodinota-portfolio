@@ -9,9 +9,28 @@
     background-color: transparent;
 }
 
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 @layer components {
+    .marquee {
+        animation: marquee 25s linear infinite;
+    }
+    /* .marquee_parent:hover .marquee, .marquee_parent:hover .marquee1 {
+        animation-play-state: paused;
+    } */
+    .marquee1 {
+        animation: marquee 25s linear infinite;
+        animation-delay: 25s;
+    }
     body{
-        @apply h-screen w-screen overflow-y-hidden;
+        @apply h-screen w-screen overflow-hidden ;
     }
 	.background-white {
 		background: linear-gradient(67.72deg, #f0eceb 1.15%, #dedede 94.33%),
@@ -47,13 +66,18 @@
     .custom-ease{
         @apply ease-[cubic-bezier(0.200,0.005,0.000,0.995)]
     }
+    @media screen and (max-width: 1280px) {
+        .parent-marquee:hover .child-marquee {
+            text-decoration: underline;
+        }
+    }
 }
 
 @layer utilities{
     .h-screen {
         height: 100dvh;
-      }
-      .min-h-screen {
+    }
+    .min-h-screen {
         min-height: 100dvh;
-      }
+    }
 }
