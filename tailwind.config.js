@@ -13,15 +13,18 @@ module.exports = {
 				"gradient-conic":
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
 			},
-            height: {
-                screen: ['100vh /* fallback for Opera, IE and etc. */', '100lvh'],
-              },
+			height: {
+				screen: [
+					"100vh /* fallback for Opera, IE and etc. */",
+					"100lvh",
+				],
+			},
 		},
-        screens: {
-            'xs': '475px',
-            ...require('tailwindcss/defaultConfig').theme.screens,
-            '2xl': '1440px',
-        },
+		screens: {
+			xs: "475px",
+			...require("tailwindcss/defaultConfig").theme.screens,
+			"2xl": "1440px",
+		},
 	},
 	plugins: [],
 };

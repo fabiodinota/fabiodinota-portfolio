@@ -2,36 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-
-::-webkit-scrollbar{
-    width: 0px;
-    height: 0px;
-    background-color: transparent;
+::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+	background-color: transparent;
 }
 
 @keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
 }
 
 @layer components {
-    .marquee {
-        animation: marquee 25s linear infinite;
-    }
-    /* .marquee_parent:hover .marquee, .marquee_parent:hover .marquee1 {
+	.marquee {
+		animation: marquee 25s linear infinite;
+	}
+	/* .marquee_parent:hover .marquee, .marquee_parent:hover .marquee1 {
         animation-play-state: paused;
     } */
-    .marquee1 {
-        animation: marquee 25s linear infinite;
-        animation-delay: 25s;
-    }
-    body{
-        @apply h-screen w-screen overflow-hidden ;
-    }
+	.marquee1 {
+		animation: marquee 25s linear infinite;
+		animation-delay: 25s;
+	}
+	body {
+		@apply h-screen w-screen overflow-hidden;
+	}
 	.background-white {
 		background: linear-gradient(67.72deg, #f0eceb 1.15%, #dedede 94.33%),
 			#ffffff;
@@ -39,45 +38,50 @@
 	.background-black {
 		background: #151515;
 	}
-    .border-bottom-animation {
-        border-bottom-width: 1px;
-        animation-duration: 1000ms;
-        transition-duration: 1000ms;
-        transition-property: border-top-width, border-bottom-width;
-    }
-    .border-bottom-animation-out{
-        border-bottom-width: 0px;
-        animation-duration: 1000ms;
-        transition-duration: 1000ms;
-        transition-property: border-top-width, border-bottom-width;
-    }
-    .border-top-animation{
-        border-top-width: 1px;
-        animation-duration: 1000ms;
-        transition-duration: 1000ms;
-        transition-property: border-top-width, border-bottom-width;
-    }
-    .border-top-animation-out{
-        border-top-width: 0px;
-        animation-duration: 1000ms;
-        transition-duration: 1000ms;
-        transition-property: border-top-width, border-bottom-width;
-    }
-    .custom-ease{
-        @apply ease-[cubic-bezier(0.200,0.005,0.000,0.995)]
-    }
-    @media screen and (max-width: 1280px) {
-        .parent-marquee:hover .child-marquee {
-            text-decoration: underline;
-        }
-    }
+	.border-bottom-animation {
+		border-bottom-width: 1px;
+		animation-duration: 1000ms;
+		transition-duration: 1000ms;
+		transition-property: border-top-width, border-bottom-width;
+	}
+	.border-bottom-animation-out {
+		border-bottom-width: 0px;
+		animation-duration: 1000ms;
+		transition-duration: 1000ms;
+		transition-property: border-top-width, border-bottom-width;
+	}
+	.border-top-animation {
+		border-top-width: 1px;
+		animation-duration: 1000ms;
+		transition-duration: 1000ms;
+		transition-property: border-top-width, border-bottom-width;
+	}
+	.border-top-animation-out {
+		border-top-width: 0px;
+		animation-duration: 1000ms;
+		transition-duration: 1000ms;
+		transition-property: border-top-width, border-bottom-width;
+	}
+	.custom-ease {
+		@apply ease-[cubic-bezier(0.200,0.005,0.000,0.995)];
+	}
+	@media screen and (max-width: 1280px) {
+		.parent-marquee:hover .child-marquee {
+			text-decoration: underline;
+		}
+	}
+	@media screen and (max-width: 475px) {
+		.parent-project:hover .child-project {
+			text-decoration: underline;
+		}
+	}
 }
 
-@layer utilities{
-    .h-screen {
-        height: 100dvh;
-    }
-    .min-h-screen {
-        min-height: 100dvh;
-    }
+@layer utilities {
+	.h-screen {
+		height: 100dvh;
+	}
+	.min-h-screen {
+		min-height: 100dvh;
+	}
 }

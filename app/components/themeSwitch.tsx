@@ -122,7 +122,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M18 11V9"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 								<motion.path
 									className="origin-bottom"
@@ -134,7 +134,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M22.9491 13.05L24.3633 11.6357"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 								<motion.path
 									className="origin-bottom"
@@ -146,7 +146,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M25 18L27 18"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 								<motion.path
 									className="origin-bottom"
@@ -158,7 +158,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M22.9491 22.95L24.3633 24.3643"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 								<motion.path
 									className="origin-bottom"
@@ -170,7 +170,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M18 27V25"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 								<motion.path
 									className="origin-bottom"
@@ -182,7 +182,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M11.6366 24.3644L13.0508 22.9502"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 								<motion.path
 									className="origin-bottom"
@@ -194,7 +194,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M9 18L11 18"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 								<motion.path
 									className="origin-bottom"
@@ -206,7 +206,7 @@ const ThemeSwitch = () => {
 									}}
 									stroke={"black"}
 									d="M11.6366 11.6356L13.0508 13.0498"
-									stroke-linecap="round"
+									strokeLinecap="round"
 								/>
 							</motion.g>
 						)}

@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
 import React, { ReactNode } from "react";
@@ -39,3 +39,4 @@ const PageTransition = ({ children }: { children: ReactNode }) => {
 };
 
 export default PageTransition;
+ */

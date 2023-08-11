@@ -29,7 +29,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 		setMenuOpen(!menuOpen);
 	};
 
-	const PageTransitionVariant = {
+	/* const PageTransitionVariant = {
 		initial: {
 			opacity: 0,
 			scale: 0.95,
@@ -55,7 +55,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 			},
 		},
 	};
-
+ */
 	return (
 		<main
 			className={`${colors.background} grid grid-rows-[75px_1fr_75px] grid-cols-[75px_1fr_75px] xl:grid-rows-[100px_1fr_100px] xl:grid-cols-[150px_1fr_150px] min-h-screen h-full w-full row place-content-center`}
@@ -65,7 +65,10 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 					theme === "dark" ? "border-white" : "border-black"
 				} border-b-[1px] border-r-[1px] flex justify-center items-center`}
 			>
-				<Link href="/" className="relative w-[24px] h-[36px] right-[3px]">
+				<Link
+					href="/"
+					className="relative w-[24px] h-[36px] right-[3px]"
+				>
 					<Image
 						src={theme === "dark" ? LogoDark : LogoLight}
 						alt="Fabio Di Nota"

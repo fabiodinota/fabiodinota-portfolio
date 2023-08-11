@@ -3,7 +3,6 @@ import { Outfit } from "next/font/google";
 import { Metadata } from "next";
 import { ThemeProvider } from "./context/themeContext";
 import MainLayout from "./components/mainLayout";
-import PageTransition from "./components/pageTransition";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
