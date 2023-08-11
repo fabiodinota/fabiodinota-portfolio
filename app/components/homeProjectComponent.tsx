@@ -31,15 +31,15 @@ const HomeProjectComponent = ({
 		setWidth(widthRef.current?.offsetWidth);
 	}, []);
 
-	if (typeof window === "undefined") {
-		return null;
+	if (typeof window !== "undefined") {
+        window.addEventListener("resize", () => {
+            setWidth(widthRef.current?.offsetWidth);
+        });
 	}
 
-	window.addEventListener("resize", () => {
-		setWidth(widthRef.current?.offsetWidth);
-	});
+	const widthCalc = Number(width) + 2;
 
-	const widthStyle = Number(width) + 2;
+    const widthStyle = Number(widthCalc);
 
 	return (
 		<div
