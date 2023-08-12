@@ -22,7 +22,7 @@ export default function Home() {
 		<div className="w-full h-full">
 			<motion.div initial={{ height: "100%" }} animate={{ height: isMobile ? "40%" : "60%" }} transition={{ duration: 1, delay: 1.3, ease: [0.200,0.005,0.000,0.995] }} className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
 				<h1
-					className={`text-[15vw] sm:text-[10vw] lg:text-[100px] font-semibold leading-[1] ${colors.primary}  whitespace-nowrap`}
+					className={`text-[15vw] sm:text-[10vw] lg:text-[100px] font-semibold leading-[0.8] ${colors.primary}  whitespace-nowrap`}
 				>
                     <span className="flex flex-col md:flex-row gap-3 overflow-hidden">
                         <motion.span className="" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.0, ease: [0.200,0.005,0.000,0.995] }}>

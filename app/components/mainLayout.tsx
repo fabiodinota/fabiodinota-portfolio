@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import ThemeSwitch from "./themeSwitch";
 import { useThemeContext } from "../context/themeContext";
 import Image from "next/image";
@@ -17,6 +17,8 @@ import MenuButton from "./menuButton";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Lottie from "lottie-react";
+import LogoLottie from "../../public/LOGO.json";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
 	const pathname = usePathname();
@@ -29,33 +31,14 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 		setMenuOpen(!menuOpen);
 	};
 
-	/* const PageTransitionVariant = {
-		initial: {
-			opacity: 0,
-			scale: 0.95,
-			blur: 50,
-		},
-		animate: {
-			scale: 1,
-			blur: 0,
-			opacity: 1,
-			transition: {
-				duration: 0.5,
-				ease: [0, 0.5, 0.42, 0.99],
-				type: "just",
-			},
-		},
-		exit: {
-			blur: 50,
-			opacity: 0,
-			scale: 1.05,
-			transition: {
-				duration: 0.5,
-				ease: "easeOut",
-			},
-		},
-	};
- */
+    let logoSwitch = false;
+
+    setTimeout(() => {
+        logoSwitch = true;
+    }, 1000);
+
+
+
 	return (
 		<main
 			className={`${colors.background} grid grid-rows-[75px_1fr_75px] grid-cols-[75px_1fr_75px] xl:grid-rows-[100px_1fr_100px] xl:grid-cols-[150px_1fr_150px] min-h-screen h-full w-full row place-content-center`}
@@ -73,8 +56,14 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 						src={theme === "dark" ? LogoDark : LogoLight}
 						alt="Fabio Di Nota"
 						fill
-						className="object-contain"
+						className={`object-contain ${logoSwitch ? "opacity-100" : "opacity-0"} duration-200`}
 					/>
+                    <Lottie
+                        animationData={LogoLottie}
+                        loop={false}
+                        autoplay={true}
+                        className={`absolute top-0 left-0 w-full h-full object-contain scale-150 ${logoSwitch ? "opacity-0 hidden" : "opacity-100"} duration-200`}
+                    />
 				</Link>
 			</div>
 			<div
@@ -109,6 +98,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 							type: "spring",
 							damping: 20,
 							stiffness: 300,
+                            duration: 0.5,
 						}}
 						className="relative w-[28px] h-[28px] cursor-pointer"
 					>
@@ -128,6 +118,8 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 							type: "spring",
 							damping: 20,
 							stiffness: 300,
+                            ease: [0.200,0.005,0.000,0.995],
+                            duration: 0.5,
 						}}
 						className="relative w-[28px] h-[28px] cursor-pointer"
 					>
@@ -149,6 +141,8 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 							type: "spring",
 							damping: 20,
 							stiffness: 300,
+                            ease: [0.200,0.005,0.000,0.995],
+                            duration: 0.5,
 						}}
 						className="relative w-[28px] h-[28px] cursor-pointer"
 					>

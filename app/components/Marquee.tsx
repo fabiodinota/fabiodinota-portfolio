@@ -8,7 +8,7 @@ import Jouri from "../../public/jouri.png";
 const Marquee = () => {
 	const { colors, border } = useThemeContext();
 	return (
-		<div className="h-full flex flex-row w-max p-5 marquee_parent">
+		<div className="h-full min-h-[200px] flex flex-row w-max p-5 marquee_parent">
 			<div className="w-max grid grid-cols-4 h-full marquee">
 				<HomeProjectComponent
 					border={border}
