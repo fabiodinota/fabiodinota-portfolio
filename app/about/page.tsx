@@ -13,13 +13,22 @@ import EDR_logo from "../../public/EDR_logo_experience.png";
 import Fabi_logo from "../../public/Fabi_logo_experience.png";
 import Growii_logo from "../../public/Growii_logo_experience.png";
 import SkillsComponent from "../components/SkillsComponent";
+import { motion } from "framer-motion";
 
 function About() {
 	const { colors, border, theme } = useThemeContext();
 
 	const [isOpen, setIsOpen] = useState<number>(0);
 
-	const [isOpenBig, setIsOpenBig] = useState<boolean>(true);
+	const [isOpenBig, setIsOpenBig] = useState<boolean>(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsOpenBig(true)
+        }, 800)
+    }, [])
+
+    console.log(isOpenBig)
 
 	const [disabled, setDisabled] = useState<boolean>(false);
 
@@ -39,7 +48,10 @@ function About() {
 						: "lg:max-xl:scale-100 xl:scale-[1.15] 2xl:scale-125"
 				}`}
 			>
-				<div
+				<motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0, ease: [0.200,0.005,0.000,0.995] }}
 					className={`max-w-[900px] md:max-w-none w-[100%] xl:w-[50%] xl:pb-0 max-h-[450px] pr-5 flex justify-start lg:justify-center items-start flex-col ${colors.primary}`}
 				>
 					<h1 className="text-[36px] md:text-[36px] 2xl:pb-2 font-semibold hidden lg:block">
@@ -61,8 +73,13 @@ function About() {
 						thrilled to collaborate on exciting projects. Let&apos;s
 						create something awesome together!
 					</p>
-				</div>
-				<div className="hidden sm:block flex-grow w-full xl:w-[350px] relative h-full min-h-[300px] max-h-[400px] xl:h-[350px] xl:flex-grow-0 z-auto">
+				</motion.div>
+				<motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.1, ease: [0.200,0.005,0.000,0.995] }} 
+                    className="hidden sm:block flex-grow w-full xl:w-[350px] relative h-full min-h-[300px] max-h-[400px] xl:h-[350px] xl:flex-grow-0 z-auto"
+                >
 					<Image
 						sizes="400px"
 						src={
@@ -75,7 +92,7 @@ function About() {
 						className="object-contain relative z-0"
 						alt="map"
 					/>
-				</div>
+				</motion.div>
 			</div>
 			<div
 				onClick={() => (disabled ? null : setIsOpen(0))}
@@ -283,7 +300,7 @@ function About() {
 					onClick={() => {
 						setIsOpenBig(!isOpenBig);
 					}}
-					className={`w-full h-[60px] flex justify-between flex-shrink-0 items-center px-[30px] border-t-[1px] ${
+					className={`w-full h-[60px] flex justify-between cursor-pointer flex-shrink-0 items-center px-[30px] border-t-[1px] ${
 						isOpenBig
 							? "border-bottom-animation duration-0"
 							: "border-bottom-animation-out"

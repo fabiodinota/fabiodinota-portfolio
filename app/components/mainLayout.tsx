@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import { ReactNode, useState } from "react";
 import ThemeSwitch from "./themeSwitch";
 import { useThemeContext } from "../context/themeContext";
 import Image from "next/image";
@@ -14,7 +14,7 @@ import TwitterLight from "../../public/Twitter_light.svg";
 import TwitterDark from "../../public/Twitter_dark.svg";
 import MenuComponent from "./menu";
 import MenuButton from "./menuButton";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -204,5 +204,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 		</main>
 	);
 };
+
+
 
 export default MainLayout;

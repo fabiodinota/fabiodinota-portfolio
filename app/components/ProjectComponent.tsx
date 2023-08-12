@@ -1,14 +1,15 @@
-import React from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { useThemeContext } from "../context/themeContext";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface projectComponentProps {
 	title: string;
 	description: string;
 	link: string;
 	image: StaticImageData;
+    index: number
 }
 
 const ProjectComponent = ({
@@ -16,10 +17,16 @@ const ProjectComponent = ({
 	description,
 	link,
 	image,
+    index,
 }: projectComponentProps) => {
 	const { colors, border } = useThemeContext();
 	return (
-		<div className={`w-full h-full flex flex-col border ${border}`}>
+		<motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: index * 0.08, ease: [0.200,0.005,0.000,0.995] }}
+            className={`w-full h-full flex flex-col border ${border}`}
+        >
 			<Image
 				quality={100}
 				src={image}
@@ -48,7 +55,7 @@ const ProjectComponent = ({
 					View
 				</Link>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

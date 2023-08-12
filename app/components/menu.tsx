@@ -1,7 +1,6 @@
 import Link from "next/link";
-import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 interface MenuProps {
 	colors: {
@@ -100,43 +99,43 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
 					variants={MenuVariant}
 					className={`absolute z-50 ${colors.background} top-0 left-0 w-full h-full flex flex-col justify-start items-stretch`}
 				>
-					{MenuItems.map((item, index) => (
-						<motion.div
-							custom={index}
-							variants={MenuItemVariants}
-							key={index}
-							className={`pl-[30px] xl:pl-[50px] flex justify-start items-center w-full h-full ${
-								theme === "dark"
-									? "border-white"
-									: "border-black"
-							} ${
-								index === 0 ? "border-none" : "border-t-[1px]"
-							}`}
-						>
-							<Link
-								href={item.link}
-								onError={() => console.log("error")}
-								onClick={onClick}
-								className={`text-[42px] sm:text-[50px] xl:text-[60px] `}
-							>
-								<span
-									className={`font-semibold ${
-										pathname === item.link
-											? colors.red
-											: colors.primary
-									}`}
-								>
-									{item.number}
-								</span>
-								<span className={`${colors.red}`}>.</span>
-								<span
-									className={`font-extralight pl-[10px] ${colors.primary}`}
-								>
-									{item.text}
-								</span>
-							</Link>
-						</motion.div>
-					))}
+                    {MenuItems.map((item, index) => (
+                        <motion.div
+                            custom={index}
+                            variants={MenuItemVariants}
+                            key={index}
+                            className={`pl-[30px] xl:pl-[50px] flex justify-start items-center w-full h-full ${
+                                theme === "dark"
+                                    ? "border-white"
+                                    : "border-black"
+                            } ${
+                                index === 0 ? "border-none" : "border-t-[1px]"
+                            }`}
+                        >
+                            <Link
+                                href={item.link}
+                                onError={() => console.log("error")}
+                                onClick={onClick}
+                                className={`text-[42px] sm:text-[50px] xl:text-[60px] `}
+                            >
+                                <span
+                                    className={`font-semibold ${
+                                        pathname === item.link
+                                            ? colors.red
+                                            : colors.primary
+                                    }`}
+                                >
+                                    {item.number}
+                                </span>
+                                <span className={`${colors.red}`}>.</span>
+                                <span
+                                    className={`font-extralight pl-[10px] ${colors.primary}`}
+                                >
+                                    {item.text}
+                                </span>
+                            </Link>
+                        </motion.div>
+                    ))}
 				</motion.div>
 			)}
 		</AnimatePresence>

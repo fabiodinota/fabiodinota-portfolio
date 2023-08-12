@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 
 interface MenuProps {
@@ -62,6 +61,7 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 						/>
 					</motion.g>
 				)}
+                {/* //million-ignore */}
 				{!menuOpen && (
 					<motion.g
 						key={"Menu"}
@@ -90,50 +90,50 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 				className={`text-[18px] select-none font-extralight relative  w-[50px] h-[28px] ${colors.primary}`}
 			>
 				<div className="absolute top-0 left-0 overflow-hidden h-[26px] flex flex-row">
-					{Menu.split("").map((char, index) => {
-						return (
-							<motion.div
-								variants={variant}
-								initial="animate"
-								animate={menuOpen ? "initial" : "animate"}
-								exit="exit"
-								transition={{
-									ease: [0, 0.5, 0.42, 0.99],
-									duration: 0.3,
-									delay: index * 0.05,
-								}}
-								className="w-max"
-								key={index}
-							>
-								{char}
-							</motion.div>
-						);
+                    {Menu.split("").map((char, index) => {
+                        return (
+                            <motion.div
+                                variants={variant}
+                                initial="animate"
+                                animate={menuOpen ? "initial" : "animate"}
+                                exit="exit"
+                                transition={{
+                                    ease: [0, 0.5, 0.42, 0.99],
+                                    duration: 0.3,
+                                    delay: index * 0.05,
+                                }}
+                                className="w-max"
+                                key={index}
+                            >
+                                {char}
+                            </motion.div>
+                        );
 					})}
 				</div>
 				<div className="absolute top-0 left-0 overflow-hidden flex flex-row">
-					{Close.split("").map((char, index) => {
-						return (
-							<motion.div
-								variants={variant}
-								initial="exit"
-								animate={menuOpen ? "animate" : "exit"}
-								exit="exit"
-								transition={{
-									ease: [0, 0.5, 0.42, 0.99],
-									duration: 0.3,
-									delay: index * 0.05,
-								}}
-								className="w-max"
-								key={index}
-							>
-								{char}
-							</motion.div>
-						);
-					})}
+                    {Close.split("").map((char, index) => {
+                        return (
+                            <motion.div
+                                variants={variant}
+                                initial="exit"
+                                animate={menuOpen ? "animate" : "exit"}
+                                exit="exit"
+                                transition={{
+                                    ease: [0, 0.5, 0.42, 0.99],
+                                    duration: 0.3,
+                                    delay: index * 0.05,
+                                }}
+                                className="w-max"
+                                key={index}
+                            >
+                                {char}
+                            </motion.div>
+                        );
+                    })}
 				</div>
 			</div>
 		</div>
 	);
-};
+}
 
 export default MenuButton;

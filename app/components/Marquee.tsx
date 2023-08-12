@@ -1,4 +1,3 @@
-import React from "react";
 import HomeProjectComponent from "./homeProjectComponent";
 import { useThemeContext } from "../context/themeContext";
 import Beyond from "../../public/beyond.png";
@@ -72,6 +71,6 @@ const Marquee = () => {
 			</div>
 		</div>
 	);
-};
+}
 
 export default Marquee;

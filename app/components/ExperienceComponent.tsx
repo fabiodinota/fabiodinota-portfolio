@@ -1,4 +1,3 @@
-import React from "react";
 import { useThemeContext } from "../context/themeContext";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";

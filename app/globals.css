@@ -26,7 +26,6 @@
     } */
 	.marquee1 {
 		animation: marquee 25s linear infinite;
-		animation-delay: 25s;
 	}
 	body {
 		@apply h-screen w-screen overflow-hidden;
