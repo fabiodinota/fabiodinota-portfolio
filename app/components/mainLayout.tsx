@@ -18,7 +18,8 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Lottie from "lottie-react";
-import LogoLottie from "../../public/LOGO.json";
+import LogoLottieWhite from "../../public/Logo_white.json";
+import LogoLottieBlack from "../../public/Logo_black.json";
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
 	const pathname = usePathname();
@@ -31,11 +32,12 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 		setMenuOpen(!menuOpen);
 	};
 
-    let logoSwitch = false;
+    const [logoSwitch, setLogoSwitch] = useState(false);
 
     setTimeout(() => {
-        logoSwitch = true;
+        setLogoSwitch(true);
     }, 1000);
+
 
 
 
@@ -50,19 +52,13 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 			>
 				<Link
 					href="/"
-					className="relative w-[24px] h-[36px] right-[3px]"
+					className="relative w-[24px] h-[36px] right-[1px]"
 				>
-					<Image
-						src={theme === "dark" ? LogoDark : LogoLight}
-						alt="Fabio Di Nota"
-						fill
-						className={`object-contain ${logoSwitch ? "opacity-100" : "opacity-0"} duration-200`}
-					/>
                     <Lottie
-                        animationData={LogoLottie}
+                        animationData={theme === "dark" ? LogoLottieWhite : LogoLottieBlack}
                         loop={false}
                         autoplay={true}
-                        className={`absolute top-0 left-0 w-full h-full object-contain scale-150 ${logoSwitch ? "opacity-0 hidden" : "opacity-100"} duration-200`}
+                        className={`absolute top-0 left-0 w-full h-full object-contain scale-[1.5] duration-200 delay-200`}
                     />
 				</Link>
 			</div>
