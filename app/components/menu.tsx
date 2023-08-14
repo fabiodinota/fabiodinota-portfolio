@@ -116,7 +116,7 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
                                 href={item.link}
                                 onError={() => console.log("error")}
                                 onClick={onClick}
-                                className={`text-[42px] sm:text-[50px] xl:text-[60px] `}
+                                className={`text-[10vw] xs:text-[42px] sm:text-[50px] xl:text-[60px] `}
                             >
                                 <span
                                     className={`font-semibold ${

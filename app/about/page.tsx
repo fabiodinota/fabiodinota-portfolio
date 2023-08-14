@@ -28,8 +28,6 @@ function About() {
         }, 800)
     }, [])
 
-    console.log(isOpenBig)
-
 	const [disabled, setDisabled] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -262,7 +260,7 @@ function About() {
 				</div>
 				<div className="relative w-full h-full overflow-y-scroll z-0 ">
 					<div
-						className={`w-full absolute top-[80px]  space-y-5 left-0 ${colors.background} p-5 h-full`}
+						className={`w-full absolute top-[80px]  space-y-5 left-0 ${colors.background} p-5 h-max`}
 					>
 						<SkillsComponent
 							title="Languages"
