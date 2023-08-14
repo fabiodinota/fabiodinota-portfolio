@@ -21,9 +21,9 @@
 	.marquee {
 		animation: marquee 25s linear infinite;
 	}
-	/* .marquee_parent:hover .marquee, .marquee_parent:hover .marquee1 {
+ 	.marquee_parent:hover .marquee, .marquee_parent:hover .marquee1 {
         animation-play-state: paused;
-    } */
+    }
 	.marquee1 {
 		animation: marquee 25s linear infinite;
 	}

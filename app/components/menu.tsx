@@ -114,7 +114,6 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
                         >
                             <Link
                                 href={item.link}
-                                onError={() => console.log("error")}
                                 onClick={onClick}
                                 className={`text-[10vw] xs:text-[42px] sm:text-[50px] xl:text-[60px] `}
                             >
