@@ -93,7 +93,7 @@ export default function Home() {
 					</Link>
 				</div>
 				<div
-					className={`${border} border-t-[1px] h-[60%] xl:h-full w-full xl:w-[50%] overflow-x-clip`}
+					className={`${border} border-t-[1px] h-[60%] min-h-[200px] xl:h-full w-full xl:w-[50%] overflow-x-clip`}
 				>
 					<Marquee />
 				</div>
