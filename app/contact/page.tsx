@@ -2,13 +2,14 @@
 
 import React, { FormEvent, useState } from "react";
 import { useThemeContext } from "../context/themeContext";
-import { InputField, Select, TextArea } from "../components/ContactComponents";
+import SubmitButton, { InputField, Select, TextArea } from "../components/ContactComponents";
 import Image from "next/image";
-import ContactImage from "../../public/Contact.png";
+import ContactImageWhite from "../../public/Contact_white.png";
+import ContactImageBlack from "../../public/Contact_black.png";
 import axios from "axios";
 
 function Contact() {
-	const { colors, border } = useThemeContext();
+	const { colors, border, theme } = useThemeContext();
 
     type ContactInfoSelectType = "Commission" | "Question" | "Collaboration" | "Bug Report" | "Other";
 
@@ -30,7 +31,7 @@ function Contact() {
         message: ''
     })
 
-   /*  const handleSubmit = (e: FormEvent) => {
+   const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
 
         const EmailData = {
@@ -44,24 +45,33 @@ function Contact() {
 
         axios.post('/api', EmailData)
             .then((response) => {
-                console.log(response.status, response.data);
+                console.log(response);
             })
             .catch((err) => {
                 console.log(err)
             })
-    } */
+
+
+        /* axios.post('/api', EmailData)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((err) => {
+                console.log(err)
+            }) */
+    }
 
 	return (
         <>
-            <div className={`border-b ${border} absolute z-50 ${colors.background} top-0 left-0 w-full h-[80px] flex lg:hidden justify-start items-center px-5 text-[20px] ${colors.primary}`}>
+            <div className={`border-b ${border} absolute z-40 ${colors.background} top-0 left-0 w-full h-[80px] flex lg:hidden justify-start items-center px-5 text-[20px] ${colors.primary}`}>
                 Contact Me
             </div>
             <div
                 className={`${colors.primary} h-full w-full  overflow-y-scroll relative flex flex-row justify-center items-start top-0`}
             >
-                <div className="w-full max-w-[1300px] h-full  p-5 lg:px-10 flex flex-row items-start lg:items-center relative top-[80px] lg:top-0 justify-evenly space-x-5">
+                <div className="w-full max-w-[1300px] h-full  p-5 lg:px-10 flex flex-row items-start relative top-[80px] lg:top-[2em] justify-evenly space-x-10">
                     <div
-                        className="flex flex-col gap-5 justify-start items-start w-full lg:w-[60%]"
+                        className="flex flex-col gap-5 justify-start items-start w-full lg:w-[60%] overflow-y-scroll lg:pb-5"
                     >
                         <div className="hidden lg:block">
                             <h1 className={`text-[30px] font-normal text-left ${colors.primary}`}>
@@ -91,15 +101,20 @@ function Contact() {
                         <TextArea placeholder="Message" name="message" onChange={
                             (e) => setContactInfo({...contactInfo, message: e.currentTarget.value})
                         }/>
-{/*                         <button onClick={(e) => handleSubmit(e)}>Submit</button>
- */}                    </div>
+                        <SubmitButton 
+                            text="Send"
+                            onClick={(e) => handleSubmit(e)}
+                        />
+                   </div>
                     <div
-                        className={`relative w-[40%] h-[750px] hidden lg:flex border ${border}`}
+                        className={`relative w-[500px] h-[750px] hidden lg:block`}
                     >
                         <Image 
-                            src={ContactImage}
-                            className="object-cover aspect-[original]"
+                            src={theme === "dark" ? ContactImageBlack : ContactImageWhite}
+                            className="object-contain"
                             fill
+                            quality={100}
+                            sizes="500px"
                             alt="Contact Me" 
                         />
                     </div>
