@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(req: NextApiRequest) {
+async function POST(req: NextApiRequest) {
     try {
         let body = await new Response(req.body).text();
 
@@ -24,3 +24,4 @@ export async function POST(req: NextApiRequest) {
     }
 }
 
+export default POST;
