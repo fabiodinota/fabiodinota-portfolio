@@ -31,8 +31,15 @@ function Contact() {
         message: ''
     })
 
+    const [message, setMessage] = useState<string>("");
+
    const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
+
+        if(contactInfo.name === '' || contactInfo.email === '' || contactInfo.subject === '' || contactInfo.message === '') {
+            setMessage("Please fill out all the required fields.")
+            return;
+        }
 
         const EmailData = {
             type: contactInfo.type,
@@ -49,10 +56,10 @@ function Contact() {
             }
         })
             .then((response) => {
-                console.log(response);
+                setMessage("Message sent successfully!")
             })
             .catch((err) => {
-                console.error(err)
+                setMessage("Something went wrong, please try again later.")
             })
     }
 
@@ -100,6 +107,9 @@ function Contact() {
                             text="Send"
                             onClick={(e) => handleSubmit(e)}
                         />
+                        <p className={`text-[20px] font-extralight ${message === "Message sent successfully!" ? "text-green-500" : "text-red-600"}`}>
+                            {message}
+                        </p>
                    </div>
                     <div
                         className={`relative w-[500px] h-[750px] hidden lg:block`}
