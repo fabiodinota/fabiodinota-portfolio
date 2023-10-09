@@ -9,12 +9,6 @@ import { useMediaQuery } from "react-responsive";
 export default function Home() {
 	const { theme, colors, border } = useThemeContext();
 
-    const Lines = {
-        Line1: "Fabio Di Nota",
-        Line2: "Software Engineer",
-        Line3: "& Designer",
-    }
-
     const isMobile = useMediaQuery({ query: '(max-width: 1280px)' })
     
 

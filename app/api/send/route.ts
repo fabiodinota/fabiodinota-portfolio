@@ -5,7 +5,7 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
     try {
         let body = await new Response(req.body).text();
 
@@ -23,5 +23,3 @@ async function POST(req: NextRequest) {
         return NextResponse.json({ error: (error as Error).message || error })
     }
 }
-
-export default POST;
