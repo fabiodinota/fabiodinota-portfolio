@@ -30,6 +30,7 @@ const ProjectComponent = ({
 			<Image
 				quality={100}
 				src={image}
+                priority
 				className="aspect-video w-full h-full"
 				alt="placeholder"
 			/>

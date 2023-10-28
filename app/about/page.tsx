@@ -323,7 +323,7 @@ function About() {
 						>
 							<SkillsComponent
 								title="Languages"
-								description="Javascript, Typescript, Python, CSS, SQL"
+								description="Javascript, Typescript, Python, CSS, SQL, PHP"
 							/>
 							<SkillsComponent
 								title="Technologies"

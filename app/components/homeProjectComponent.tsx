@@ -11,6 +11,7 @@ interface HomeProjectComponentProps {
 	description: string;
 	link: string;
 	image: StaticImageData;
+    index: number
 }
 
 const HomeProjectComponent = ({
@@ -19,12 +20,13 @@ const HomeProjectComponent = ({
         description,
         link,
         image,
+        index
     }: HomeProjectComponentProps) => {
 	const { colors } = useThemeContext();
 
 	const widthRef = useRef<HTMLDivElement>(null);
 
-	const [width, setWidth] = useState(widthRef.current?.offsetWidth);
+	const [width, setWidth] = useState<number | undefined>(undefined);
 
 	useEffect(() => {
 		setWidth(widthRef.current?.offsetWidth);
@@ -42,7 +44,8 @@ const HomeProjectComponent = ({
 
 	return (
             <div
-                style={{ width: widthStyle || 0 }}
+                style={{ width: widthStyle }}
+                key={index}
                 className={`mr-5 last:mr-0 flex flex-col border min-w-[150px] xl:min-w-[270px] ${border}`}
             >
                 <div
@@ -55,7 +58,7 @@ const HomeProjectComponent = ({
                         fill
                         className="aspect-video"
                         alt="placeholder"
-                        priority={false}
+                        priority
                     />
                 </div>
                 <div
