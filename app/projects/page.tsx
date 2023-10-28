@@ -51,12 +51,12 @@ function Projects() {
                 className={`${colors.primary} h-full w-full grid gap-5 p-5 place-content-start place-items-center grid-cols-1 md:grid-cols-2 2xl:grid-cols-3`}
             >
                 <ProjectFolderComponent 
-                    title="Design Projects"
+                    title="Design"
                     link="/projects/design"
                     index={6}
                 />
                 <ProjectFolderComponent 
-                    title="School Projects"
+                    title="School"
                     link="/projects/school"
                     index={7}
                 />
@@ -66,7 +66,7 @@ function Projects() {
                     index={8}
                 />
                 <ProjectFolderComponent 
-                    title="Other Projects"
+                    title="Other"
                     link="/projects/other"
                     index={9}
                 />
