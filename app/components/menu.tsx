@@ -119,10 +119,7 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
                             >
                                 <span
                                     className={`font-semibold ${
-                                        pathname === item.link
-                                            ? colors.red
-                                            : colors.primary
-                                    }`}
+                                        (item.link === "/" ? pathname === item.link : pathname.startsWith(item.link)) ? colors.red : colors.primary}`}
                                 >
                                     {item.number}
                                 </span>

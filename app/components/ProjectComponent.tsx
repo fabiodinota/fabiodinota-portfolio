@@ -3,6 +3,7 @@ import { StaticImageData } from "next/image";
 import { useThemeContext } from "../context/themeContext";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 interface projectComponentProps {
 	title: string;
@@ -20,6 +21,8 @@ const ProjectComponent = ({
     index,
 }: projectComponentProps) => {
 	const { colors, border } = useThemeContext();
+    const isXS = useMediaQuery({ query: '(max-width: 475px)' })
+
 	return (
 		<motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -34,9 +37,7 @@ const ProjectComponent = ({
 				className="aspect-video w-full h-full"
 				alt="placeholder"
 			/>
-			<div
-				className={`flex flex-row justify-between items-center px-5 py-3 border-t parent-project cursor-pointer ${border}`}
-			>
+            <LinkorDiv href={link} isXS={isXS} border={border}>
 				<div className="flex flex-col justify-center">
 					<h4
 						className={`font-extralight leading-tight child-project ${colors.primary} text-[20px]`}
@@ -56,9 +57,32 @@ const ProjectComponent = ({
 				>
 					View
 				</Link>
-			</div>
+            </LinkorDiv>
 		</motion.div>
 	);
 };
 
 export default ProjectComponent;
+
+interface LinkorDivProps {
+    href: string;
+    isXS: boolean;
+    children: React.ReactNode;
+    border: string;
+}
+
+const LinkorDiv = ({ href, isXS, children, border }: LinkorDivProps) => {
+    if (isXS) {
+        return (
+            <Link href={href} className={`flex-row flex justify-between items-center px-5 py-3 border-t parent-project cursor-pointer ${border}`}>
+                {children}
+            </Link>
+        )
+    } else {
+        return (
+            <div className={`flex-row flex justify-between items-center px-5 py-3 border-t parent-project cursor-pointer ${border}`}>
+                {children}
+            </div>
+        )
+    }
+}

@@ -92,7 +92,7 @@ export const OtherProjectsList: ProjectsProps[] = [
     },
     {
         title: "Beefy Blokes",
-        description: "Crypto Minting Website Development",
+        description: "Crypto Website Development",
         link: "https://beefy-blokes.vercel.app",
         image: BeefyBlokes,
     },
