@@ -52,6 +52,7 @@ const ProjectComponent = ({
 				<Link
 					className={`font-extralight hidden xs:grid place-items-center border px-5 py-2 hover:underline ${border} ${colors.primary}`}
 					href={link}
+                    target="_blank"
 				>
 					View
 				</Link>
