@@ -42,8 +42,8 @@ function About() {
 			<div
 				className={`lg:flex justify-center items-center flex-wrap md:flex-nowrap p-5 md:p-10 py-5 xl:gap-5 flex-row h-[50%] lg:h-full hidden flex-grow-0 custom-ease duration-700 overflow-x-hidden  ${
 					isOpenBig
-						? "scale-110 lg:max-xl:scale-90"
-						: "lg:max-xl:scale-100 xl:scale-[1.15] 2xl:scale-125"
+						? "scale-100 lg:max-xl:scale-90 2xl:scale-[1.2]"
+						: "lg:max-xl:scale-100 xl:scale-[1.10] 2xl:scale-[1.20]"
 				}`}
 			>
 				<motion.div
