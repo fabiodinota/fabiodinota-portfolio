@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import { Metadata } from "next";
 import { ThemeProvider } from "./context/themeContext";
 import MainLayout from "./components/mainLayout";
+import { Analytics } from "@vercel/analytics/react"
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -47,6 +48,7 @@ export default function RootLayout({
 			<html lang="en">
 				<body className={`${outfit.className} `}>
 					<MainLayout>{children}</MainLayout>
+                    <Analytics />
 				</body>
 			</html>
 		</ThemeProvider>
