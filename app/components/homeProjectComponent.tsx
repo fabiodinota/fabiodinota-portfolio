@@ -66,7 +66,7 @@ const HomeProjectComponent = ({
                 >
                     <div className="flex flex-col justify-center">
                         <h4
-                            className={`font-extralight leading-tight child-marquee ${colors.primary} text-[20px]`}
+                            className={`font-extralight leading-tight child-marquee ${colors.primary} text-[20px] whitespace-nowrap truncate`}
                         >
                             {title}
                         </h4>

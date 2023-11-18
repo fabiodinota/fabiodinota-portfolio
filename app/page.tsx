@@ -10,11 +10,12 @@ export default function Home() {
 	const { theme, colors, border } = useThemeContext();
 
     const isMobile = useMediaQuery({ query: '(max-width: 1280px)' })
+    const isMobileHeight = useMediaQuery({ query: '(max-height: 800px)' })
     
 
 	return (
 		<div className="w-full h-full">
-			<motion.div initial={{ height: "100%" }} animate={{ height: isMobile ? "40%" : "60%" }} transition={{ duration: 1, delay: 1.3, ease: [0.200,0.005,0.000,0.995] }} className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
+			<motion.div initial={{ height: "100%" }} animate={{ height: isMobile ? isMobileHeight ? "50%" : "40%" : "60%" }} transition={{ duration: 1, delay: 1.3, ease: [0.200,0.005,0.000,0.995] }} className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
 				<h1
 					className={`text-[15vw]  sm:text-[10vw] lg:text-[100px] font-semibold leading-[0.8] ${colors.primary}  whitespace-nowrap`}
 				>
@@ -69,25 +70,27 @@ export default function Home() {
 					<span className="font-thin">& Designer</span>
 				</p>
 			</div> */}
-			<motion.div className="relative h-[60%] xl:h-[40%] flex flex-col-reverse xl:flex-row">
+			<motion.div className={`relative ${isMobileHeight ? "h-[50%]" : "h-[60%]"} xl:h-[40%] flex flex-col-reverse xl:flex-row`}>
+                {isMobileHeight ? null : (
+                    <div
+                        className={`h-[40%] xl:h-full ${border} border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%] flex justify-center items-center flex-col p-5 gap-5`}
+                    >
+                        <Link
+                            className={`w-full h-full border ${border} ${colors.primary} text-[15px] group xl:text-[20px] font-extralight flex justify-center items-center`}
+                            href="/projects"
+                        >
+                            <p className="group-hover:underline">Projects</p>
+                        </Link>
+                        <Link
+                            className={`w-full h-full border ${border} ${colors.primary} text-[15px] group  xl:text-[20px] font-extralight flex justify-center items-center`}
+                            href="/contact"
+                        >
+                            <p className="group-hover:underline">Contact Me</p>
+                        </Link>
+                    </div>
+                )}
 				<div
-					className={`h-[40%] xl:h-full ${border} border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%] flex justify-center items-center flex-col p-5 gap-5`}
-				>
-					<Link
-						className={`w-full h-full border ${border} ${colors.primary} text-[15px] group xl:text-[20px] font-extralight flex justify-center items-center`}
-						href="/projects"
-					>
-						<p className="group-hover:underline">Projects</p>
-					</Link>
-					<Link
-						className={`w-full h-full border ${border} ${colors.primary} text-[15px] group  xl:text-[20px] font-extralight flex justify-center items-center`}
-						href="/contact"
-					>
-						<p className="group-hover:underline">Contact Me</p>
-					</Link>
-				</div>
-				<div
-					className={`${border} border-t-[1px] h-[60%] min-h-[200px] xl:h-full w-full xl:w-[50%] overflow-x-clip`}
+					className={`${border} border-t-[1px] ${isMobileHeight ? "h-full" : "h-[60%]"} min-h-[200px] xl:h-full w-full xl:w-[50%] overflow-x-clip`}
 				>
 					<Marquee />
 				</div>
