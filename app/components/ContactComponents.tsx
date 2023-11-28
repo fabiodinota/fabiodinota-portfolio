@@ -23,7 +23,7 @@ export const InputField: React.FC<InputFieldProps> = ({ placeholder, name, onCha
         autoComplete='off'
         onChange={(e) => onChange(e)}
         alt='What is your name or social media handle?'
-        className={` w-full h-[70px] flex-shrink-0 border ${border} bg-none text-[20px] font-extralight px-5 focus:outline-none placeholder:font-thin placeholder:text-[20px] ${theme === "dark" ? "placeholder:text-white" : "placeholder:text-black"} align-middle`}
+        className={` w-full h-[70px] flex-shrink-0 border ${border} ${colors.background} text-[20px] font-extralight px-5 focus:outline-none placeholder:font-thin placeholder:text-[20px] ${theme === "dark" ? "placeholder:text-white" : "placeholder:text-black"} align-middle`}
     />
   )
 }
@@ -41,7 +41,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ placeholder, name, onChange 
             placeholder={placeholder}
             name={name}
             onChange={(e) => onChange(e)}
-            className={` w-full min-h-[160px] max-h-[300px] border pt-5 ${border} bg-none text-[20px] font-extralight px-5 focus:outline-none placeholder:font-thin placeholder:text-[20px] ${theme === "dark" ? "placeholder:text-white" : "placeholder:text-black"} align-middle`}
+            className={` w-full min-h-[160px] max-h-[300px] border pt-5 ${border} ${colors.background} text-[20px] font-extralight px-5 focus:outline-none placeholder:font-thin placeholder:text-[20px] ${theme === "dark" ? "placeholder:text-white" : "placeholder:text-black"} align-middle`}
         />
     )
 }
@@ -64,7 +64,7 @@ export const Select:React.FC<SelectProps> = ({ name, value, onChange }) => {
                 value={value}
                 required
                 onChange={(e) => onChange(e)}
-                className={`appearance-none w-full h-[70px] flex-shrink-0 border ${border} bg-none text-[20px] font-extralight px-5 focus:outline-none placeholder:font-thin placeholder:text-[20px] align-middle`}
+                className={`appearance-none w-full h-[70px] flex-shrink-0 border ${border} ${colors.background} text-[20px] font-extralight px-5 focus:outline-none placeholder:font-thin placeholder:text-[20px] align-middle`}
             >
                 <option>
                     Commission
@@ -101,7 +101,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ onClick, text }) => {
   return (
     <button
         type='submit'
-        className={`w-full h-[70px] hover:underline flex-shrink-0 border ${border} bg-none text-[20px] font-extralight px-5 focus:outline-none align-middle`}
+        className={`w-full h-[70px] hover:underline flex-shrink-0 border ${border} ${colors.background} text-[20px] font-extralight px-5 focus:outline-none align-middle`}
         onClick={(e) => onClick(e)}
     >
         {text}
