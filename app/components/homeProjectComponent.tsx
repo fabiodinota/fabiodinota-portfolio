@@ -4,9 +4,10 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useThemeContext } from "../context/themeContext";
+import LinkorDiv from "./LinkorDiv";
+import { useMediaQuery } from "react-responsive";
 
 interface HomeProjectComponentProps {
-	border: string;
 	title: string;
 	description: string;
 	link: string;
@@ -15,14 +16,13 @@ interface HomeProjectComponentProps {
 }
 
 const HomeProjectComponent = ({
-        border,
         title,
         description,
         link,
         image,
         index
     }: HomeProjectComponentProps) => {
-	const { colors } = useThemeContext();
+	const { colors, border } = useThemeContext();
 
 	const widthRef = useRef<HTMLDivElement>(null);
 
@@ -41,6 +41,8 @@ const HomeProjectComponent = ({
 	const widthCalc = Number(width) + 2;
 
     const widthStyle: number = Number(widthCalc);
+
+    const isLG = useMediaQuery({ query: '(max-width: 1280px)' })
 
 	return (
             <div
@@ -61,7 +63,9 @@ const HomeProjectComponent = ({
                         priority
                     />
                 </div>
-                <div
+                <LinkorDiv
+                    href={link}
+                    isXS={isLG}
                     className={`flex flex-row justify-between items-center px-5 py-3 border-t parent-marquee cursor-pointer ${border}`}
                 >
                     <div className="flex flex-col justify-center">
@@ -79,10 +83,11 @@ const HomeProjectComponent = ({
                     <Link
                         className={`font-extralight hidden xl:grid place-items-center border px-5 py-2 hover:underline ${border} ${colors.primary}`}
                         href={link}
+                        target="_blank"
                     >
                         View
                     </Link>
-                </div>
+                </LinkorDiv>
             </div>
         );
     }
