@@ -21,12 +21,7 @@
 	.marquee {
 		animation: marquee 25s linear infinite;
 	}
- 	.marquee_parent:hover .marquee, .marquee_parent:hover .marquee1 {
-        animation-play-state: paused;
-    }
-	.marquee1 {
-		animation: marquee 25s linear infinite;
-	}
+
 	body {
 		@apply h-screen w-screen overflow-hidden;
 	}

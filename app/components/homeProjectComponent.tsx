@@ -68,14 +68,14 @@ const HomeProjectComponent = ({
                     isXS={isLG}
                     className={`flex flex-row justify-between items-center px-5 py-3 border-t parent-marquee cursor-pointer ${border}`}
                 >
-                    <div className="flex flex-col justify-center">
+                    <div className="flex flex-col justify-center w-full">
                         <h4
-                            className={`font-extralight leading-tight child-marquee ${colors.primary} text-[20px] whitespace-nowrap truncate`}
+                            className={`font-extralight leading-tight child-marquee ${colors.primary} text-[20px] whitespace-nowrap w-full truncate`}
                         >
                             {title}
                         </h4>
                         <p
-                            className={`font-extralight ${colors.secondary} text-[14px] whitespace-nowrap min-w-[150px]`}
+                            className={`font-extralight ${colors.secondary} text-[14px] whitespace-nowrap w-full truncate`}
                         >
                             {description}
                         </p>
