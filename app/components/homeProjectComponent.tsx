@@ -48,7 +48,7 @@ const HomeProjectComponent = ({
             <div
                 style={{ width: widthStyle }}
                 key={index}
-                className={`mr-5 last:mr-0 flex flex-col border min-w-[150px] xl:min-w-[270px] ${border}`}
+                className={`flex flex-col border min-w-[150px] xl:min-w-[270px] ${border}`}
             >
                 <div
                     ref={widthRef}

@@ -16,7 +16,7 @@ export default function Home() {
     const dragConstraints = useRef<HTMLDivElement>(null);
 	return (
 		<div className="w-full h-full">
-			<motion.div initial={{ height: "100%" }} animate={{ height: isMobile ? isMobileHeight ? "50%" : "50%" : "60%" }} transition={{ duration: 1, delay: 1.3, ease: [0.200,0.005,0.000,0.995] }} className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
+			<motion.div initial={{ height: "100%" }} animate={{ height: isMobile ? isMobileHeight ? "50%" : "40%" : "60%" }} transition={{ duration: 1, delay: 1.3, ease: [0.200,0.005,0.000,0.995] }} className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
 				<h1
 					className={`text-[15vw]  sm:text-[10vw] lg:text-[100px] font-semibold leading-[0.8] ${colors.primary}  whitespace-nowrap`}
 				>
@@ -74,7 +74,7 @@ export default function Home() {
 			<motion.div className={`relative ${isMobileHeight ? "h-[50%]" : "h-[60%]"} xl:h-[40%] flex flex-col-reverse xl:flex-row`}>
                 {isMobileHeight ? null : (
                     <div
-                        className={`h-[40%] xl:h-full ${border} border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%] flex justify-center items-center flex-col p-5 gap-5`}
+                        className={`h-[50%] xl:h-full ${border} border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%] flex justify-center items-center flex-col p-5 gap-5`}
                     >
                         <Link
                             className={`w-full h-full border ${border} ${colors.primary} text-[15px] group xl:text-[20px] font-extralight flex justify-center items-center`}
@@ -92,7 +92,7 @@ export default function Home() {
                 )}
 				<div
                     ref={dragConstraints}
-					className={`${border} border-t-[1px] ${isMobileHeight ? "h-full" : "h-[50%]"} min-h-[200px] xl:h-full w-full xl:w-[50%] overflow-x-scroll`}
+					className={`${border} border-t-[1px] ${isMobileHeight ? "h-full" : "h-[100%]"} min-h-[200px] xl:h-full w-full xl:w-[50%] overflow-x-scroll`}
 				>
 					<Marquee dragConstraints={dragConstraints}  />
 				</div>
