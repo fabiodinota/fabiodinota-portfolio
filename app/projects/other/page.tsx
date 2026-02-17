@@ -14,7 +14,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ArrowDark from "../../../public/Arrow_dark.svg";
 import ArrowLight from "../../../public/Arrow_light.svg";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { OtherProjectsList } from "@/app/components/ProjectsList";
 
 function OtherProjects() {

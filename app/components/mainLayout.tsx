@@ -14,7 +14,7 @@ import TwitterLight from "../../public/Twitter_light.svg";
 import TwitterDark from "../../public/Twitter_dark.svg";
 import MenuComponent from "./menu";
 import MenuButton from "./menuButton";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Lottie from "lottie-react";

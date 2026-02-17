@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
                 from: process.env.EMAIL || "contact@fabiodinota.com",
                 to: process.env.EMAIL ||  "contact@fabiodinota.com",
                 subject: "New message from fabiodinota.com" + " - " + subject,
-                react: EmailTemplate({ type, name, email, subject, budget, message }), 
+                react: EmailTemplate({ type, name, email, subject, budget, message }) as React.ReactElement, 
         });
 
         return NextResponse.json(data);

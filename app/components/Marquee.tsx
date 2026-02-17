@@ -1,13 +1,13 @@
 "use client"
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import HomeProjectComponent from "./homeProjectComponent";
 import { FeaturedProjectsList } from "./ProjectsList";
 import { RefObject, useRef } from "react";
 
-const Marquee = ({ dragConstraints }: { dragConstraints: RefObject<HTMLDivElement> }) => {
+const Marquee = ({ dragConstraints }: { dragConstraints: RefObject<HTMLDivElement | null> }) => {
 	return (
-		<motion.div drag="x" dragConstraints={dragConstraints} className="h-full flex flex-row w-max p-5 gap-5 parent_marquee">
+		<motion.div className="h-full flex flex-row w-max p-5 gap-5 parent_marquee">
 			<div className="w-max grid grid-cols-3 gap-5 h-full lg:marquee">
                 {FeaturedProjectsList.map((project, index) => (
                     <HomeProjectComponent

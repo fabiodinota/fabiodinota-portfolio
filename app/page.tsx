@@ -3,7 +3,7 @@
 import { useThemeContext } from "./context/themeContext";
 import Link from "next/link";
 import Marquee from "./components/Marquee";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 import { useRef } from "react";
 
@@ -92,7 +92,7 @@ export default function Home() {
                 )}
 				<div
                     ref={dragConstraints}
-					className={`${border} border-t-[1px] ${isMobileHeight ? "h-full" : "h-[100%]"} min-h-[200px] xl:h-full w-full xl:w-[50%] flex-grow overflow-x-scroll`}
+					className={`${border} border-t-[1px] ${isMobileHeight ? "h-full" : "h-[100%]"} min-h-[200px] xl:h-full w-full xl:w-[50%] flex-grow overflow-x-hidden`}
 				>
 					<Marquee dragConstraints={dragConstraints}  />
 				</div>

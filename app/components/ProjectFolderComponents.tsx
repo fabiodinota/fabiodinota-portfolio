@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useThemeContext } from "../context/themeContext";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 
 interface projectFolderComponentProps {

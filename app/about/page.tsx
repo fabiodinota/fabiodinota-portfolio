@@ -13,7 +13,7 @@ import EDR_logo from "../../public/EDR_logo_experience.png";
 import Fabi_logo from "../../public/Fabi_logo_experience.png";
 import Growii_logo from "../../public/Growii_logo_experience.png";
 import SkillsComponent from "../components/SkillsComponent";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 function About() {
 	const { colors, border, theme } = useThemeContext();

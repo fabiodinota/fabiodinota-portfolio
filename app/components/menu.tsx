@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 
 interface MenuProps {
@@ -54,7 +54,7 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
 			transition: {
 				delay: index * 0.1,
 				duration: 0.5,
-				ease: [0, 0.5, 0.42, 0.99],
+				ease: [0, 0.5, 0.42, 0.99] as const,
 			},
 		}),
 		exit: (index: number) => ({
@@ -63,7 +63,7 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
 			transition: {
 				delay: index * -0.1,
 				duration: 0.5,
-				ease: [0.635, 0.005, 1.0, 0.44],
+				ease: [0.635, 0.005, 1.0, 0.44] as const,
 			},
 		}),
 	};
