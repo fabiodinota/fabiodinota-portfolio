@@ -1,10 +1,10 @@
 import "./globals.css";
 import { Outfit } from "next/font/google";
 import { Metadata } from "next";
-import { ThemeProvider } from "./context/themeContext";
-import MainLayout from "./components/mainLayout";
-import MotionProvider from "./components/MotionProvider";
-import { Analytics } from "@vercel/analytics/react"
+import { ThemeProvider } from "./context/theme-context";
+import MainLayout from "./components/main-layout";
+import MotionProvider from "./components/motion-provider";
+import { Analytics } from "@vercel/analytics/react";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -77,11 +77,11 @@ export default function RootLayout({
 	return (
 		<ThemeProvider>
 			<html lang="en">
-				<body className={`${outfit.className} `}>
+				<body className={outfit.className}>
 					<MotionProvider>
 						<MainLayout>{children}</MainLayout>
 					</MotionProvider>
-                    <Analytics />
+					<Analytics />
 				</body>
 			</html>
 		</ThemeProvider>

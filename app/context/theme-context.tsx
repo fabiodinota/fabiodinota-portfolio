@@ -9,21 +9,12 @@ import {
 	useState,
 	useSyncExternalStore,
 } from "react";
-
-interface ThemeProviderProps {
-	children: React.ReactNode;
-}
+import type { ThemeColors } from "@/lib/types";
 
 interface ThemeContextProps {
 	theme: string;
 	setTheme: Dispatch<SetStateAction<string>>;
-	colors: {
-		primary: string;
-		secondary: string;
-		background: string;
-		border: string;
-		red: string;
-	};
+	colors: ThemeColors;
 	border: string;
 }
 
@@ -40,14 +31,15 @@ const ThemeContext = createContext<ThemeContextProps>({
 	border: "",
 });
 
-const LightMode = {
+const LightMode: ThemeColors = {
 	primary: "text-black",
 	secondary: "text-black opacity-50",
 	background: "background-white",
 	border: "outline-black",
 	red: "text-[#FE4C4C]",
 };
-const DarkMode = {
+
+const DarkMode: ThemeColors = {
 	primary: "text-white",
 	secondary: "text-white opacity-50",
 	background: "background-black",
@@ -71,11 +63,13 @@ function getServerSnapshot() {
 	return "dark";
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+	children,
+}) => {
 	const systemTheme = useSyncExternalStore(
 		subscribeToColorScheme,
 		getColorSchemeSnapshot,
-		getServerSnapshot
+		getServerSnapshot,
 	);
 
 	const [theme, setTheme] = useState(systemTheme);
@@ -86,13 +80,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
 	const value = useMemo(
 		() => ({ theme, setTheme, colors, border }),
-		[theme, colors, border]
+		[theme, colors, border],
 	);
 
 	return (
-		<ThemeContext.Provider value={value}>
-			{children}
-		</ThemeContext.Provider>
+		<ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 	);
 };
 
