@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { useThemeContext } from "../context/themeContext";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 
 interface projectFolderComponentProps {
@@ -20,11 +19,11 @@ const ProjectFolderComponent = ({
     const isXS = useMediaQuery({ query: '(max-width: 475px)' })
 
 	return (
-        <motion.div 
+        <m.div 
             className="w-full"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: index * 0.08, ease: [0.200,0.005,0.000,0.995] }}
+            transition={{ duration: 1, delay: index * 0.08, ease: [0.200,0.005,0.000,0.995] as const }}
         >
             <LinkorDiv href={link} border={border} isXS={isXS}>
                 <div className="flex flex-col justify-center">
@@ -41,7 +40,7 @@ const ProjectFolderComponent = ({
                     View
                 </Link>
             </LinkorDiv>
-        </motion.div>
+        </m.div>
 	);
 };
 

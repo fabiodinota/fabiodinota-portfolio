@@ -3,7 +3,7 @@
 import { useThemeContext } from "./context/themeContext";
 import Link from "next/link";
 import Marquee from "./components/Marquee";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 import { useRef } from "react";
 
@@ -16,21 +16,21 @@ export default function Home() {
     const dragConstraints = useRef<HTMLDivElement>(null);
 	return (
 		<div className="w-full h-full">
-			<motion.div initial={{ height: "100%" }} animate={{ height: isMobile ? isMobileHeight ? "50%" : "40%" : "60%" }} transition={{ duration: 1, delay: 1.3, ease: [0.200,0.005,0.000,0.995] }} className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
+			<m.div initial={{ height: "100%" }} animate={{ height: isMobile ? isMobileHeight ? "50%" : "40%" : "60%" }} transition={{ duration: 1, delay: 1.3, ease: [0.200,0.005,0.000,0.995] as const }} className="h-[40%] xl:h-[60%] flex justify-center items-start flex-col pl-5 md:pl-[4vw]">
 				<h1
 					className={`text-[15vw]  sm:text-[10vw] lg:text-[100px] font-semibold leading-[0.8] ${colors.primary}  whitespace-nowrap`}
 				>
                     <span className="flex flex-col md:flex-row gap-3 overflow-hidden">
-                        <motion.span className="" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.0, ease: [0.200,0.005,0.000,0.995] }}>
+                        <m.span className="" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.0, ease: [0.200,0.005,0.000,0.995] as const }}>
                             Fabio
-                        </motion.span>
+                        </m.span>
                         <span className="whitespace-nowrap flex flex-row gap-3 overflow-hidden">
-                                <motion.span className="" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.200,0.005,0.000,0.995] }}>
+                                <m.span className="" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.1, ease: [0.200,0.005,0.000,0.995] as const }}>
                                     Di
-                                </motion.span>
-                                <motion.span className="block md:inline whitespace-nowrap" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.2, ease: [0.200,0.005,0.000,0.995] }}>
+                                </m.span>
+                                <m.span className="block md:inline whitespace-nowrap" initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.2, ease: [0.200,0.005,0.000,0.995] as const }}>
                                     Nota<span className={`${colors.red} inline-flex`}>.</span>
-                                </motion.span>
+                                </m.span>
                         </span>
                     </span>
 				</h1>
@@ -38,40 +38,24 @@ export default function Home() {
 					className={` ${colors.primary} text-[22px] xs:text-[34px] sm:text-[40px] xl:text-[64px] flex flex-col leading-[1.2]`}
 				>
 					<span className="flex flex-shrink xs:flex-row gap-3 overflow-hidden font-light">
-                        <motion.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.3, ease: [0.200,0.005,0.000,0.995] }}>
+                        <m.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.3, ease: [0.200,0.005,0.000,0.995] as const }}>
                             Software
-                        </motion.span>
-                        <motion.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.4, ease: [0.200,0.005,0.000,0.995] }}>
+                        </m.span>
+                        <m.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.4, ease: [0.200,0.005,0.000,0.995] as const }}>
                             Engineer
-                        </motion.span>
+                        </m.span>
                     </span>
                     <span className="flex flex-row gap-3 overflow-hidden font-thin relative -top-2">
-                        <motion.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.5, ease: [0.200,0.005,0.000,0.995] }}>
+                        <m.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.5, ease: [0.200,0.005,0.000,0.995] as const }}>
                             &
-                        </motion.span>
-                        <motion.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.6, ease: [0.200,0.005,0.000,0.995] }}>
+                        </m.span>
+                        <m.span initial={{ y: -80 }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.6, ease: [0.200,0.005,0.000,0.995] as const }}>
                             Designer
-                        </motion.span>
+                        </m.span>
                     </span>
 				</p>
-			</motion.div>
-			{/* <h1
-					className={`text-[60px] xs:text-[70px] sm:text-[80px] xl:text-[100px] font-semibold ${colors.primary} leading-none whitespace-nowrap`}
-				>
-					Fabio{" "}
-					<span className="block md:inline whitespace-nowrap">
-						Di Nota
-						<span className={`${colors.red} inline-flex`}>.</span>
-					</span>
-				</h1>
-				<p
-					className={` ${colors.primary} text-[30px] xs:text-[34px] sm:text-[40px] xl:text-[64px] flex flex-col leading-none`}
-				>
-					<span className="font-light">Software Engineer</span>
-					<span className="font-thin">& Designer</span>
-				</p>
-			</div> */}
-			<motion.div className={`relative ${isMobileHeight ? "h-[50%]" : "h-[60%]"} xl:h-[40%] flex flex-col-reverse xl:flex-row`}>
+			</m.div>
+			<m.div className={`relative ${isMobileHeight ? "h-[50%]" : "h-[60%]"} xl:h-[40%] flex flex-col-reverse xl:flex-row`}>
                 {isMobileHeight ? null : (
                     <div
                         className={`h-[50%] xl:h-full ${border} border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%] flex justify-center items-center flex-col p-5 gap-5`}
@@ -96,7 +80,7 @@ export default function Home() {
 				>
 					<Marquee dragConstraints={dragConstraints}  />
 				</div>
-			</motion.div>
+			</m.div>
 		</div>
 	);
 }

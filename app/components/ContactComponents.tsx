@@ -57,8 +57,26 @@ export const Select:React.FC<SelectProps> = ({ name, value, onChange }) => {
 
     const [open, setOpen] = useState<boolean>(false);
 
+    const handleSelectClick = () => {
+        setOpen(!open);
+    };
+
+    const handleSelectKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleSelectClick();
+        }
+    };
+
     return (
-        <div onClick={() => setOpen(!open)} className='relative w-full'>
+        <div
+            onClick={handleSelectClick}
+            onKeyDown={handleSelectKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label="Select inquiry type"
+            className='relative w-full'
+        >
              <select
                 name={name}
                 value={value}

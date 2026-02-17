@@ -14,7 +14,7 @@ import TwitterLight from "../../public/Twitter_light.svg";
 import TwitterDark from "../../public/Twitter_dark.svg";
 import MenuComponent from "./menu";
 import MenuButton from "./menuButton";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Lottie from "lottie-react";
@@ -34,9 +34,12 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 
     const [logoSwitch, setLogoSwitch] = useState(false);
 
-    setTimeout(() => {
-        setLogoSwitch(true);
-    }, 1000);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLogoSwitch(true);
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, []);
 
 
 
@@ -85,7 +88,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 				} border-r-[1px]`}
 			>
 				<div className="flex justify-center items-center gap-[30px] flex-col">
-					<motion.a
+					<m.a
 						href="https://github.com/fabiodinota"
 						target="_blank"
 						whileHover={{ scale: 1.05 }}
@@ -100,12 +103,13 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 					>
 						<Image
 							src={theme === "dark" ? GithubDark : GithubLight}
-							alt="Fabio Di Nota"
+							alt="GitHub"
 							fill
+							sizes="28px"
 							className="object-contain"
 						/>
-					</motion.a>
-					<motion.a
+					</m.a>
+					<m.a
 						href="https://linkedin.com/in/fabiodinota"
 						target="_blank"
 						whileHover={{ scale: 1.05 }}
@@ -114,7 +118,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 							type: "spring",
 							damping: 20,
 							stiffness: 300,
-                            ease: [0.200,0.005,0.000,0.995],
+                            ease: [0.200,0.005,0.000,0.995] as const,
                             duration: 0.5,
 						}}
 						className="relative w-[28px] h-[28px] cursor-pointer"
@@ -123,12 +127,13 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 							src={
 								theme === "dark" ? LinkedinDark : LinkedinLight
 							}
-							alt="Fabio Di Nota"
+							alt="LinkedIn"
 							fill
+							sizes="28px"
 							className="object-contain"
 						/>
-					</motion.a>
-					<motion.a
+					</m.a>
+					<m.a
 						href="https://twitter.com/fabiodinota"
 						target="_blank"
 						whileHover={{ scale: 1.05 }}
@@ -137,18 +142,19 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
 							type: "spring",
 							damping: 20,
 							stiffness: 300,
-                            ease: [0.200,0.005,0.000,0.995],
+                            ease: [0.200,0.005,0.000,0.995] as const,
                             duration: 0.5,
 						}}
 						className="relative w-[28px] h-[28px] cursor-pointer"
 					>
 						<Image
 							src={theme === "dark" ? TwitterDark : TwitterLight}
-							alt="Fabio Di Nota"
+							alt="Twitter"
 							fill
+							sizes="28px"
 							className="object-contain"
 						/>
-					</motion.a>
+					</m.a>
 				</div>
 			</div>
 			<div

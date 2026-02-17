@@ -31,7 +31,6 @@ function Contact() {
         message: ''
     })
 
-    console.log(contactInfo)
 
     const [message, setMessage] = useState<string>("");
 

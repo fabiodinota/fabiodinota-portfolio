@@ -1,13 +1,13 @@
 "use client"
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import HomeProjectComponent from "./homeProjectComponent";
 import { FeaturedProjectsList } from "./ProjectsList";
-import { RefObject, useRef } from "react";
+import { RefObject } from "react";
 
 const Marquee = ({ dragConstraints }: { dragConstraints: RefObject<HTMLDivElement | null> }) => {
 	return (
-		<motion.div className="h-full flex flex-row w-max p-5 gap-5 parent_marquee">
+		<m.div className="h-full flex flex-row w-max p-5 gap-5 parent_marquee">
 			<div className="w-max grid grid-cols-3 gap-5 h-full lg:marquee">
                 {FeaturedProjectsList.map((project, index) => (
                     <HomeProjectComponent
@@ -16,7 +16,7 @@ const Marquee = ({ dragConstraints }: { dragConstraints: RefObject<HTMLDivElemen
                         link={project.link}
                         image={project.image}
                         index={index}
-                        key={index}
+                        key={project.link}
                     />
                 ))} 
 
@@ -29,11 +29,11 @@ const Marquee = ({ dragConstraints }: { dragConstraints: RefObject<HTMLDivElemen
                         link={project.link}
                         image={project.image}
                         index={index}
-                        key={index}
+                        key={project.link}
                     />
                 ))} 
 			</div>
-		</motion.div>
+		</m.div>
 	);
 }
 

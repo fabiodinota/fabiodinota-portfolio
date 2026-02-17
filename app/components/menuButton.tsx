@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 interface MenuProps {
 	colors: {
@@ -29,10 +29,22 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 		open: { scale: 0.9 },
 		closed: { scale: 1.1, transition: { duration: 0 } },
 	};
+
+	const handleKeyDown = (e: React.KeyboardEvent) => {
+		if (e.key === "Enter" || e.key === " ") {
+			e.preventDefault();
+			onClick();
+		}
+	};
+
 	return (
 		<div
 			className="flex flex-row items-center gap-[10px] cursor-pointer"
 			onClick={onClick}
+			onKeyDown={handleKeyDown}
+			role="button"
+			tabIndex={0}
+			aria-label={menuOpen ? "Close menu" : "Open menu"}
 		>
 			<svg
 				width="28"
@@ -42,7 +54,7 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				{menuOpen && (
-					<motion.g
+					<m.g
 						key={"Close"}
 						variants={menuIconVariant}
 						animate={menuOpen ? "open" : "closed"}
@@ -59,11 +71,10 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 							strokeLinecap="round"
 							strokeLinejoin="round"
 						/>
-					</motion.g>
+					</m.g>
 				)}
-                {/* //million-ignore */}
 				{!menuOpen && (
-					<motion.g
+					<m.g
 						key={"Menu"}
 						variants={menuIconVariant}
 						animate={menuOpen ? "open" : "closed"}
@@ -83,7 +94,7 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 							stroke={theme === "dark" ? "white" : "black"}
 							strokeLinecap="round"
 						/>
-					</motion.g>
+					</m.g>
 				)}
 			</svg>
 			<div
@@ -92,42 +103,42 @@ const MenuButton = ({ menuOpen, theme, colors, onClick }: MenuProps) => {
 				<div className="absolute top-0 left-0 overflow-hidden h-[26px] flex flex-row">
                     {Menu.split("").map((char, index) => {
                         return (
-                            <motion.div
+                            <m.div
                                 variants={variant}
                                 initial="animate"
                                 animate={menuOpen ? "initial" : "animate"}
                                 exit="exit"
                                 transition={{
-                                    ease: [0, 0.5, 0.42, 0.99],
+                                    ease: [0, 0.5, 0.42, 0.99] as const,
                                     duration: 0.3,
                                     delay: index * 0.05,
                                 }}
                                 className="w-max"
-                                key={index}
+                                key={`menu-${char}-${index}`}
                             >
                                 {char}
-                            </motion.div>
+                            </m.div>
                         );
 					})}
 				</div>
 				<div className="absolute top-0 left-0 overflow-hidden flex flex-row">
                     {Close.split("").map((char, index) => {
                         return (
-                            <motion.div
+                            <m.div
                                 variants={variant}
                                 initial="exit"
                                 animate={menuOpen ? "animate" : "exit"}
                                 exit="exit"
                                 transition={{
-                                    ease: [0, 0.5, 0.42, 0.99],
+                                    ease: [0, 0.5, 0.42, 0.99] as const,
                                     duration: 0.3,
                                     delay: index * 0.05,
                                 }}
                                 className="w-max"
-                                key={index}
+                                key={`close-${char}-${index}`}
                             >
                                 {char}
-                            </motion.div>
+                            </m.div>
                         );
                     })}
 				</div>

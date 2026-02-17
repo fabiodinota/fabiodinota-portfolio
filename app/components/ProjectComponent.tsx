@@ -2,7 +2,7 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { useThemeContext } from "../context/themeContext";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 import LinkorDiv from "./LinkorDiv";
 
@@ -25,10 +25,10 @@ const ProjectComponent = ({
     const isXS = useMediaQuery({ query: '(max-width: 475px)' })
 
 	return (
-		<motion.div
+		<m.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: index * 0.08, ease: [0.200,0.005,0.000,0.995] }}
+            transition={{ duration: 1, delay: index * 0.08, ease: [0.200,0.005,0.000,0.995] as const }}
             className={`w-full h-full flex flex-col border ${border}`}
         >
 			<Image
@@ -36,7 +36,7 @@ const ProjectComponent = ({
 				src={image}
                 priority
 				className="aspect-video w-full h-full"
-				alt="placeholder"
+				alt={title}
 			/>
             <LinkorDiv href={link} isXS={isXS} className={`flex-row flex justify-between items-center px-5 py-3 border-t parent-project cursor-pointer ${border}`}>
 				<div className="flex flex-col justify-center">
@@ -59,9 +59,8 @@ const ProjectComponent = ({
 					View
 				</Link>
             </LinkorDiv>
-		</motion.div>
+		</m.div>
 	);
 };
 
 export default ProjectComponent;
-

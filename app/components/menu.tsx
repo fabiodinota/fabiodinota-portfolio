@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { usePathname } from "next/navigation";
 
 interface MenuProps {
@@ -92,7 +92,7 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
 	return (
 		<AnimatePresence mode="wait">
 			{menuOpen && (
-				<motion.div
+				<m.div
 					initial="hidden"
 					animate="animate"
 					exit="exit"
@@ -100,10 +100,10 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
 					className={`absolute z-50 ${colors.background} top-0 left-0 w-full h-full flex flex-col justify-start items-stretch`}
 				>
                     {MenuItems.map((item, index) => (
-                        <motion.div
+                        <m.div
                             custom={index}
                             variants={MenuItemVariants}
-                            key={index}
+                            key={item.link}
                             className={`pl-[30px] xl:pl-[50px] flex justify-start items-center w-full h-full ${
                                 theme === "dark"
                                     ? "border-white"
@@ -130,9 +130,9 @@ const MenuComponent = ({ colors, theme, menuOpen, onClick }: MenuProps) => {
                                     {item.text}
                                 </span>
                             </Link>
-                        </motion.div>
+                        </m.div>
                     ))}
-				</motion.div>
+				</m.div>
 			)}
 		</AnimatePresence>
 	);

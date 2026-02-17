@@ -44,6 +44,7 @@ function NotFound() {
 							src={theme === "dark" ? ArrowDark : ArrowLight}
 							alt="Go Back"
 							fill
+							sizes="16px"
 							className="object-contain"
 						/>
 					</span>

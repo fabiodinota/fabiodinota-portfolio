@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useSyncExternalStore } from "react";
 import { useThemeContext } from "../context/themeContext";
 import LinkorDiv from "./LinkorDiv";
 import { useMediaQuery } from "react-responsive";
@@ -13,6 +13,11 @@ interface HomeProjectComponentProps {
 	link: string;
 	image: StaticImageData;
     index: number
+}
+
+function subscribeToResize(callback: () => void) {
+	window.addEventListener("resize", callback);
+	return () => window.removeEventListener("resize", callback);
 }
 
 const HomeProjectComponent = ({
@@ -26,28 +31,20 @@ const HomeProjectComponent = ({
 
 	const widthRef = useRef<HTMLDivElement>(null);
 
-	const [width, setWidth] = useState<number | undefined>(undefined);
+	const getWidth = useCallback(
+		() => widthRef.current?.offsetWidth ?? 0,
+		[]
+	);
 
-	useEffect(() => {
-		setWidth(widthRef.current?.offsetWidth);
-	}, []);
+	const width = useSyncExternalStore(subscribeToResize, getWidth, () => 0);
 
-	if (typeof window !== "undefined") {
-        window.addEventListener("resize", () => {
-            setWidth(widthRef.current?.offsetWidth);
-        });
-	}
-
-	const widthCalc = Number(width) + 2;
-
-    const widthStyle: number = Number(widthCalc);
+	const widthStyle = width + 2;
 
     const isLG = useMediaQuery({ query: '(max-width: 1280px)' })
 
 	return (
             <div
-                style={{ width: widthStyle }}
-                key={index}
+                style={{ width: widthStyle || undefined }}
                 className={`flex flex-col border min-w-[150px] xl:min-w-[270px] ${border}`}
             >
                 <div
@@ -59,7 +56,7 @@ const HomeProjectComponent = ({
                         src={image}
                         fill
                         className="aspect-video"
-                        alt="placeholder"
+                        alt={title}
                         priority
                     />
                 </div>

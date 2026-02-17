@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { motion } from 'framer-motion'
+import { m } from 'motion/react'
 import { useThemeContext } from '@/app/context/themeContext'
 import Image from 'next/image'
 import ArrowDark from '@/public/Arrow_dark.svg'
@@ -11,10 +11,10 @@ const LabProjects = () => {
     const { colors, theme } = useThemeContext();
     const router = useRouter();
   return (
-    <motion.div 
+    <m.div 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 * 0.08, ease: [0.200,0.005,0.000,0.995] }}
+        transition={{ duration: 1, delay: 1 * 0.08, ease: [0.200,0.005,0.000,0.995] as const }}
         className="w-full flex flex-row justify-between p-5 pb-0"
     >
         <h1 className={` ${colors.primary} text-[20px] xs:text-[26px] md:text-[36px] font-semibold`}>
@@ -31,12 +31,13 @@ const LabProjects = () => {
                     src={theme === "dark" ? ArrowDark : ArrowLight}
                     alt="Go Back"
                     fill
+                    sizes="16px"
                     className="object-contain"
                 />
             </span>
             Go Back
         </button>
-    </motion.div>
+    </m.div>
   )
 }
 

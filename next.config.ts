@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	reactStrictMode: true,
+	reactCompiler: true,
 	images: {
+		minimumCacheTTL: 14400,
 		remotePatterns: [
 			{
 				hostname: "lottie.host",

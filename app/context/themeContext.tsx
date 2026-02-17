@@ -5,8 +5,9 @@ import {
 	SetStateAction,
 	createContext,
 	useContext,
-	useEffect,
+	useMemo,
 	useState,
+	useSyncExternalStore,
 } from "react";
 
 interface ThemeProviderProps {
@@ -39,42 +40,57 @@ const ThemeContext = createContext<ThemeContextProps>({
 	border: "",
 });
 
+const LightMode = {
+	primary: "text-black",
+	secondary: "text-black opacity-50",
+	background: "background-white",
+	border: "outline-black",
+	red: "text-[#FE4C4C]",
+};
+const DarkMode = {
+	primary: "text-white",
+	secondary: "text-white opacity-50",
+	background: "background-black",
+	border: "outline-white",
+	red: "text-[#FE4C4C]",
+};
+
+function subscribeToColorScheme(callback: () => void) {
+	const mq = window.matchMedia("(prefers-color-scheme: dark)");
+	mq.addEventListener("change", callback);
+	return () => mq.removeEventListener("change", callback);
+}
+
+function getColorSchemeSnapshot() {
+	return window.matchMedia("(prefers-color-scheme: dark)").matches
+		? "dark"
+		: "light";
+}
+
+function getServerSnapshot() {
+	return "dark";
+}
+
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-	const [theme, setTheme] = useState("dark");
+	const systemTheme = useSyncExternalStore(
+		subscribeToColorScheme,
+		getColorSchemeSnapshot,
+		getServerSnapshot
+	);
 
-	useEffect(() => {
-		const mq = window.matchMedia("(prefers-color-scheme: dark)");
+	const [theme, setTheme] = useState(systemTheme);
 
-		if (mq.matches) {
-			setTheme(true ? "dark" : "light");
-		}
-
-		// This callback will fire if the perferred color scheme changes without a reload
-		mq.addEventListener("change", (evt) =>
-			setTheme(evt.matches ? "dark" : "light")
-		);
-	}, []);
-
-	const LightMode = {
-		primary: "text-black",
-		secondary: "text-black opacity-50",
-		background: "background-white",
-		border: "outline-black",
-		red: "text-[#FE4C4C]",
-	};
-	const DarkMode = {
-		primary: "text-white",
-		secondary: "text-white opacity-50",
-		background: "background-black",
-		border: "outline-white",
-		red: "text-[#FE4C4C]",
-	};
-
+	// Derived state — no useEffect needed
 	const colors = theme === "dark" ? DarkMode : LightMode;
 	const border = theme === "dark" ? "border-white" : "border-black";
 
+	const value = useMemo(
+		() => ({ theme, setTheme, colors, border }),
+		[theme, colors, border]
+	);
+
 	return (
-		<ThemeContext.Provider value={{ theme, setTheme, colors, border }}>
+		<ThemeContext.Provider value={value}>
 			{children}
 		</ThemeContext.Provider>
 	);
