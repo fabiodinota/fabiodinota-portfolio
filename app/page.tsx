@@ -5,7 +5,6 @@ import Link from "next/link";
 import Marquee from "@/app/components/marquee";
 import { m } from "motion/react";
 import { useMediaQuery } from "react-responsive";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import { EASE_SMOOTH, slideDown } from "@/lib/motion";
 
@@ -15,7 +14,7 @@ export default function Home() {
 	const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
 	const isMobileHeight = useMediaQuery({ query: "(max-height: 800px)" });
 
-	const dragConstraints = useRef<HTMLDivElement>(null);
+
 
 	return (
 		<div className="w-full h-full">
@@ -117,14 +116,13 @@ export default function Home() {
 					</div>
 				)}
 				<div
-					ref={dragConstraints}
 					className={cn(
 						"border-t-[1px] min-h-[200px] xl:h-full w-full xl:w-[50%] flex-grow overflow-x-hidden",
 						isMobileHeight ? "h-full" : "h-[100%]",
 						border,
 					)}
 				>
-					<Marquee dragConstraints={dragConstraints} />
+					<Marquee />
 				</div>
 			</m.div>
 		</div>

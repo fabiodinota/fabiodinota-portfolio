@@ -14,6 +14,7 @@ interface HomeProjectCardProps {
 	link: string;
 	image: StaticImageData;
 	index: number;
+	caseStudySlug?: string;
 }
 
 function subscribeToResize(callback: () => void) {
@@ -27,6 +28,7 @@ const HomeProjectCard = ({
 	link,
 	image,
 	index,
+	caseStudySlug,
 }: HomeProjectCardProps) => {
 	const { colors, border } = useThemeContext();
 
@@ -41,29 +43,37 @@ const HomeProjectCard = ({
 	const widthStyle = width + 2;
 	const isLG = useMediaQuery({ query: "(max-width: 1280px)" });
 
+	const primaryHref = caseStudySlug
+		? `/projects/${caseStudySlug}`
+		: link || "";
+
+	const isInternal = primaryHref.startsWith("/");
+
 	return (
 		<div
 			style={{ width: widthStyle || undefined }}
 			className={cn(
-				"flex flex-col border min-w-[150px] xl:min-w-[270px]",
+				"flex flex-col border min-w-[150px] xl:min-w-[270px] overflow-hidden select-none",
 				border,
 			)}
 		>
 			<div
 				ref={widthRef}
-				className="relative aspect-video h-full w-fit overflow-visible"
+				className="relative aspect-video h-full w-fit overflow-hidden select-none"
 			>
 				<Image
-					sizes="300px"
 					src={image}
+					quality={100}
 					fill
-					className="aspect-video"
+					className="aspect-video object-cover no-select pointer-events-none"
 					alt={title}
 					priority
+					draggable={false}
+					onDragStart={(e) => e.preventDefault()}
 				/>
 			</div>
 			<LinkOrDiv
-				href={link}
+				href={primaryHref}
 				isXS={isLG}
 				className={cn(
 					"flex flex-row justify-between items-center px-5 py-3 border-t parent-marquee cursor-pointer",
@@ -94,10 +104,10 @@ const HomeProjectCard = ({
 						border,
 						colors.primary,
 					)}
-					href={link}
-					target="_blank"
+					href={primaryHref}
+					target={isInternal ? undefined : "_blank"}
 				>
-					View
+					{caseStudySlug ? "Read" : "View"}
 				</Link>
 			</LinkOrDiv>
 		</div>

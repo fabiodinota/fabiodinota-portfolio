@@ -8,9 +8,14 @@ interface LinkOrDivProps {
 }
 
 const LinkOrDiv = ({ href, isXS, children, className }: LinkOrDivProps) => {
-	if (isXS) {
+	if (isXS && href) {
+		const isInternal = href.startsWith("/");
 		return (
-			<Link target="_blank" href={href} className={className}>
+			<Link
+				target={isInternal ? undefined : "_blank"}
+				href={href}
+				className={className}
+			>
 				{children}
 			</Link>
 		);

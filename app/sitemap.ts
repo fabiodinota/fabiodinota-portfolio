@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPostSlugs } from "@/lib/blog";
+import { AllProjects } from "@/app/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = "https://fabiodinota.com";
@@ -23,6 +24,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		priority: route === "" ? 1 : route === "/blog" ? 0.9 : route === "/projects" ? 0.9 : 0.7,
 	}));
 
+	// Case study pages
+	const caseStudyEntries: MetadataRoute.Sitemap = AllProjects
+		.filter((p) => p.caseStudySlug)
+		.map((p) => ({
+			url: `${baseUrl}/projects/${p.caseStudySlug}`,
+			lastModified: new Date(),
+			changeFrequency: "monthly" as const,
+			priority: 0.8,
+		}));
+
 	const blogSlugs = getPostSlugs();
 	const blogEntries: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
 		url: `${baseUrl}/blog/${slug}`,
@@ -31,5 +42,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		priority: 0.8,
 	}));
 
-	return [...staticEntries, ...blogEntries];
+	return [...staticEntries, ...caseStudyEntries, ...blogEntries];
 }

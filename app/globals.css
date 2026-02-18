@@ -72,6 +72,14 @@
 			text-decoration: underline;
 		}
 	}
+
+	.no-select{
+		 user-select: none;
+  -drag: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+	}
 }
 
 @layer utilities {

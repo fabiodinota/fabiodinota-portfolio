@@ -8,7 +8,7 @@ import { m } from "motion/react";
 import { DesignProjectsList } from "@/app/data/projects";
 import GoBackButton from "@/app/components/go-back-button";
 import { cn } from "@/lib/utils";
-import { EASE_SMOOTH, fadeInUp } from "@/lib/motion";
+import { EASE_SMOOTH } from "@/lib/motion";
 
 function DesignProjects() {
 	const { colors } = useThemeContext();
@@ -50,7 +50,7 @@ function DesignProjects() {
 						link={project.link}
 						image={project.image}
 						index={index + 1}
-						key={project.link}
+						key={project.link || project.title}
 					/>
 				))}
 			</div>

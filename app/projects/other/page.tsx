@@ -50,7 +50,7 @@ function OtherProjects() {
 						link={project.link}
 						image={project.image}
 						index={index + 1}
-						key={project.link}
+						key={project.link || project.title}
 					/>
 				))}
 			</div>

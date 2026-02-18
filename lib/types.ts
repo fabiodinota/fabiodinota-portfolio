@@ -10,7 +10,14 @@ export interface ThemeColors {
 
 export interface Project {
 	title: string;
+	slug: string;
+	role: string;
+	tags: string[];
+	summary: string;
+	highlight?: string;
 	description: string;
-	link: string;
 	image: StaticImageData;
+	link: string;
+	category: "engineering" | "professional";
+	caseStudySlug?: string;
 }
