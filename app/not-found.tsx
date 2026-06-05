@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import React from "react";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import { useRouter } from "next/navigation";
-import GoBackButton from "./components/go-back-button";
+import GoBackButton from "@/components/ui/go-back-button";
 import { cn } from "@/lib/utils";
 
 function NotFound() {

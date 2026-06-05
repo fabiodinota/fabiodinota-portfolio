@@ -3,8 +3,8 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useCallback, useRef, useSyncExternalStore } from "react";
-import { useThemeContext } from "@/app/context/theme-context";
-import LinkOrDiv from "./link-or-div";
+import { useThemeContext } from "@/context/theme-context";
+import LinkOrDiv from "@/components/ui/link-or-div";
 import { useMediaQuery } from "react-responsive";
 import { cn } from "@/lib/utils";
 

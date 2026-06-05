@@ -1,7 +1,7 @@
 import { getPostBySlug, getPostContent, getPostSlugs } from "@/lib/blog";
 import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/seo";
-import BlogPostClient from "./BlogPostClient";
+import BlogPostClient from "@/features/blog/blog-post-client";
 
 interface BlogPostPageProps {
 	params: Promise<{ slug: string }>;

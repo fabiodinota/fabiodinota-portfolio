@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import { AnimatePresence, m } from "motion/react";
 import { springTransition, hoverTapScale } from "@/lib/motion";
 

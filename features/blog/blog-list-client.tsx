@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Image from "next/image";
 import Link from "next/link";
 import { m } from "motion/react";

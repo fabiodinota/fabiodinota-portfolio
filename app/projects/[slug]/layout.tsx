@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AllProjects } from "@/app/data/projects";
+import { AllProjects } from "@/features/projects/data";
 import { createPageMetadata } from "@/lib/seo";
 
 type Params = Promise<{ slug: string }>;

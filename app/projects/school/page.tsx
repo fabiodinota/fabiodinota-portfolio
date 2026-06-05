@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { useThemeContext } from "@/app/context/theme-context";
-import ProjectCard from "@/app/components/project-card";
+import { useThemeContext } from "@/context/theme-context";
+import ProjectCard from "@/features/projects/project-card";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { m } from "motion/react";
-import { SchoolProjectsList } from "@/app/data/projects";
-import GoBackButton from "@/app/components/go-back-button";
+import { SchoolProjectsList } from "@/features/projects/data";
+import GoBackButton from "@/components/ui/go-back-button";
 import { cn } from "@/lib/utils";
 import { EASE_SMOOTH } from "@/lib/motion";
 

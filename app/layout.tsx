@@ -1,9 +1,9 @@
 import "./globals.css";
 import { Outfit } from "next/font/google";
 import { Metadata } from "next";
-import { ThemeProvider } from "./context/theme-context";
-import MainLayout from "./components/main-layout";
-import MotionProvider from "./components/motion-provider";
+import { ThemeProvider } from "@/context/theme-context";
+import MainLayout from "@/components/layout/main-layout";
+import MotionProvider from "@/components/layout/motion-provider";
 import { Analytics } from "@vercel/analytics/react";
 import {
 	createPageMetadata,

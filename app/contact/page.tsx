@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { useThemeContext } from "@/app/context/theme-context";
-import Terminal from "@/app/components/terminal";
+import { useThemeContext } from "@/context/theme-context";
 import Link from "next/link";
 import { m } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -53,11 +52,7 @@ export default function Contact() {
 								colors.primary,
 							)}
 						>
-							type{" "}
-							<code className="font-mono text-[14px] px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">
-								help
-							</code>{" "}
-							to get started.
+							Web applications, UI audits, and technical direction.
 						</p>
 					</div>
 
@@ -92,14 +87,33 @@ export default function Contact() {
 							<Link className="underline" href="/projects/the-velox">
 								The Velox case study
 							</Link>
-							. The terminal below routes your message by service
-							type so the brief arrives with the right context.
+							.
 						</p>
+						<div className="flex flex-col gap-2 pt-2">
+							<a
+								className={cn(
+									"w-fit border px-5 py-3 font-extralight hover:underline",
+									border,
+									colors.primary,
+								)}
+								href="mailto:contact@fabiodinota.com"
+							>
+								contact@fabiodinota.com
+							</a>
+							<a
+								className={cn(
+									"w-fit border px-5 py-3 font-extralight hover:underline",
+									border,
+									colors.primary,
+								)}
+								href="https://linkedin.com/in/fabiodinota"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								LinkedIn
+							</a>
+						</div>
 					</section>
-
-					<div className="flex-1 min-h-0">
-						<Terminal />
-					</div>
 				</m.div>
 			</div>
 		</>

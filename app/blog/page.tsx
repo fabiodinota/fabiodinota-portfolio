@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/lib/blog";
-import BlogListClient from "./BlogListClient";
+import BlogListClient from "@/features/blog/blog-list-client";
 
 export default function BlogPage() {
 	const posts = getAllPosts();

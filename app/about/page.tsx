@@ -1,22 +1,22 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Image from "next/image";
 import Link from "next/link";
 import PlaceholderLight from "@/public/About_main.png";
 import PlaceholderDark from "@/public/About_main_white.png";
-import ExperienceCard from "@/app/components/experience-card";
+import ExperienceCard from "@/features/about/experience-card";
 import AzuriteLogo from "@/public/Azurite_logo_experience.png";
 import EDRLogo from "@/public/EDR_logo_experience.png";
 import FabiLogo from "@/public/Fabi_logo_experience.png";
 import GrowiiLogo from "@/public/Growii_logo_experience.png";
-import SkillCard from "@/app/components/skill-card";
+import SkillCard from "@/components/ui/skill-card";
 import {
 	AboutHero,
 	AccordionSection,
 	SkillsExperiencePanel,
-} from "@/app/components/about-sections";
+} from "@/features/about/about-sections";
 import { cn } from "@/lib/utils";
 
 function About() {

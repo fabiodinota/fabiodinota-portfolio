@@ -1,8 +1,8 @@
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Link from "next/link";
 import { m } from "motion/react";
 import { useMediaQuery } from "react-responsive";
-import LinkOrDiv from "./link-or-div";
+import LinkOrDiv from "@/components/ui/link-or-div";
 import { cn } from "@/lib/utils";
 import { fadeInUp } from "@/lib/motion";
 

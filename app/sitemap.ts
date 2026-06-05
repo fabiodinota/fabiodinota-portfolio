@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPostSlugs } from "@/lib/blog";
-import { AllProjects } from "@/app/data/projects";
+import { AllProjects } from "@/features/projects/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 	const baseUrl = "https://fabiodinota.com";

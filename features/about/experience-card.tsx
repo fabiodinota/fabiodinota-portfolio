@@ -1,4 +1,4 @@
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

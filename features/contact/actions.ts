@@ -1,7 +1,9 @@
 "use server";
 
 import { Resend } from "resend";
-import { EmailTemplate } from "@/app/components/email-template";
+import type { ReactElement } from "react";
+import { EmailTemplate } from "@/features/contact/email-template";
+import { validateContactPayload } from "@/features/contact/validation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -20,19 +22,15 @@ export async function sendContactEmail(
 	const subject = formData.get("subject") as string;
 	const message = formData.get("message") as string;
 
-	// Server-side validation
-	if (!service || !name || !email || !subject || !message) {
-		return { success: false, error: "All fields are required." };
-	}
-
-	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	if (!emailRegex.test(email)) {
-		return { success: false, error: "Invalid email address." };
-	}
-
-	const validServices = ["--web-app", "--ui-audit", "--consulting"];
-	if (!validServices.includes(service)) {
-		return { success: false, error: "Invalid service flag." };
+	const validationError = validateContactPayload({
+		service,
+		name,
+		email,
+		subject,
+		message,
+	});
+	if (validationError) {
+		return { success: false, error: validationError };
 	}
 
 	try {
@@ -46,7 +44,7 @@ export async function sendContactEmail(
 				email,
 				subject,
 				message,
-			}) as React.ReactElement,
+			}) as ReactElement,
 		});
 
 		return { success: true, error: "" };

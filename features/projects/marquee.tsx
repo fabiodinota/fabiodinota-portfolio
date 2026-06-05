@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useEffect, useCallback } from "react";
-import HomeProjectCard from "./home-project-card";
-import { FeaturedProjectsList } from "@/app/data/projects";
+import HomeProjectCard from "@/features/projects/home-project-card";
+import { FeaturedProjectsList } from "@/features/projects/data";
 
 const AUTO_SCROLL_SPEED = 0.3; // px per frame — slow, smooth drift
 

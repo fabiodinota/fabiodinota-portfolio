@@ -2,11 +2,11 @@
 
 import React from "react";
 import { m } from "motion/react";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Link from "next/link";
-import ProjectCard from "@/app/components/project-card";
-import ProjectFolderCard from "@/app/components/project-folder-card";
-import { EngineeringProjects, ProfessionalProjects } from "@/app/data/projects";
+import ProjectCard from "@/features/projects/project-card";
+import ProjectFolderCard from "@/features/projects/project-folder-card";
+import { EngineeringProjects, ProfessionalProjects } from "@/features/projects/data";
 import { cn } from "@/lib/utils";
 import { fadeInUp } from "@/lib/motion";
 

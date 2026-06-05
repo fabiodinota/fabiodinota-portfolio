@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Link from "next/link";
 import { m } from "motion/react";
 import { cn } from "@/lib/utils";

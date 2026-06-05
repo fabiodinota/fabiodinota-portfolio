@@ -1,95 +1,84 @@
-# Fabio Di Nota | Software Engineer & Designer Portfolio
+# Fabio Di Nota Portfolio
 
-![Project Status](https://img.shields.io/badge/status-active-success.svg)
-![Next.js](https://img.shields.io/badge/Next.js-13.5-black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3-38B2AC)
+Personal portfolio for software engineering, UI/UX design, project case studies,
+blog posts, and contact inquiries.
 
-A sophisticated personal portfolio website designed to showcase software engineering projects, design work, and technical skills. Built with performance and aesthetics in mind, this project utilizes the latest features of the Next.js App Router.
+## Stack
 
-## ✨ Key Features
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- motion
+- Lottie React
+- Resend
+- Vitest
 
-* **🎨 Dynamic Theming:** A robust Dark/Light mode toggler with custom SVG animations, managed via React Context (`themeContext.tsx`).
-* **Hp Interactive UI:**
-    * **Draggable Marquee:** A custom infinite scrolling project showcase on the homepage powered by Framer Motion.
-    * **Animated Page Transitions:** Smooth entry and exit animations between routes.
-    * **Lottie Animations:** High-quality vector animations for branding elements.
-* **mdx Responsive Grid Layout:** A mobile-first approach ensuring seamless viewing on devices ranging from smartphones (`xs`) to large desktop screens (`2xl`).
-* **FK Contact System:** Fully functional server-side email handling using **Resend** and **React-Email** templates.
-* **📁 Categorized Projects:** Dedicated dynamic routing for various project types (Design, Lab, School, Featured).
+## Getting Started
 
-## 🛠 Tech Stack
+Install dependencies:
 
-* **Framework:** [Next.js 13](https://nextjs.org/) (App Router)
-* **Language:** [TypeScript](https://www.typescriptlang.org/)
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **Animation:** [Framer Motion](https://www.framer.com/motion/) & [Lottie React](https://lottiefiles.com/)
-* **Email Backend:** [Resend](https://resend.com/)
-* **Deployment:** [Vercel](https://vercel.com)
+```bash
+npm install
+```
 
-## 🚀 Getting Started
+Run the development server:
 
-Follow these steps to run the project locally.
+```bash
+npm run dev
+```
 
-### Prerequisites
+Open [http://localhost:3000](http://localhost:3000).
 
-* Node.js (v16.8 or later)
-* npm, yarn, or pnpm
+## Scripts
 
-### Installation
+```bash
+npm run dev        # Start the local development server
+npm run lint       # Run ESLint
+npm run typecheck  # Run TypeScript without emitting files
+npm test           # Run Vitest unit tests
+npm run build      # Create a production build
+npm run start      # Serve the production build
+```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/fabiodinota/fabiodinota-portfolio.git](https://github.com/fabiodinota/fabiodinota-portfolio.git)
-    cd fabiodinota-portfolio
-    ```
+## Environment
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+Create `.env.local` for local contact form delivery:
 
-3.  **Configure Environment Variables:**
-    Create a `.env.local` file in the root directory and add your API keys (required for the contact form):
+```env
+RESEND_API_KEY=re_...
+EMAIL=contact@fabiodinota.com
+```
 
-    ```env
-    RESEND_API_KEY=re_123456789
-    EMAIL=your-verified-sender@domain.com
-    ```
-
-4.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-
-5.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`RESEND_API_KEY` is required for email delivery. `EMAIL` is used as both the
+sender and recipient address; when omitted, the server action falls back to
+`contact@fabiodinota.com`.
 
 ## Project Structure
 
-├── app/ # Next.js App Router source 
-├ ├── globals.css # Global styles & Tailwind directives  
-├ └── layout.tsx # Root layout 
-├── api/ # Server-side API routes (Email sending) 
-├── components/ # Reusable UI components (Marquee, Navbar, Cards) 
-├── context/ # React Context (Theme provider) 
-├── projects/ # Project category pages  
-├── public/ # Static assets (Images, SVGs, Lottie JSONs) 
-└── ...config files
+```text
+app/                  Route files, layouts, metadata, sitemap, robots, OG route
+components/layout/    Shared shell and providers
+components/navigation/Menu, menu button, and theme switch
+components/ui/        Generic UI primitives
+context/              Theme context
+content/blog/         Markdown blog posts
+features/about/       About page components
+features/blog/        Blog client components
+features/contact/     Contact validation, server action, and email template
+features/projects/    Project data and project cards
+lib/                  SEO, blog, motion, type, and utility helpers
+public/               Static images, SVGs, and Lottie assets
+tests/                Vitest unit tests and archived contact terminal fixture
+```
 
+## Content
 
-## 📦 Build & Deployment
+Blog posts are markdown files in `content/blog`. Project data lives in
+`features/projects/data.ts`; project images are imported from `public/`.
 
-This project is optimized for deployment on **Vercel**.
+## Contact Flow
 
-1.  Push your code to a GitHub repository.
-2.  Import the project into Vercel.
-3.  Add the `RESEND_API_KEY` and `EMAIL` to the Vercel Environment Variables.
-4.  Deploy!
-
-To build locally:
-
-```bash
-npm run build
-npm run start
+The active contact page links to email and LinkedIn directly. The previous
+terminal contact UI is parked under `tests/fixtures/contact-terminal` for now.
+Server-side contact utilities remain in `features/contact/` for future reuse.

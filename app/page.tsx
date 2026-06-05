@@ -1,8 +1,8 @@
 "use client";
 
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Link from "next/link";
-import Marquee from "@/app/components/marquee";
+import Marquee from "@/features/projects/marquee";
 import { m } from "motion/react";
 import { useMediaQuery } from "react-responsive";
 import { cn } from "@/lib/utils";

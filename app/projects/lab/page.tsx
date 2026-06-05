@@ -2,10 +2,10 @@
 
 import { m } from "motion/react";
 import React from "react";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import GoBackButton from "@/app/components/go-back-button";
+import GoBackButton from "@/components/ui/go-back-button";
 import { cn } from "@/lib/utils";
 import { EASE_SMOOTH } from "@/lib/motion";
 

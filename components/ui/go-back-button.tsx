@@ -3,7 +3,7 @@
 import Image from "next/image";
 import ArrowDark from "@/public/Arrow_dark.svg";
 import ArrowLight from "@/public/Arrow_light.svg";
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import { cn } from "@/lib/utils";
 
 interface GoBackButtonProps {

@@ -1,8 +1,8 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import ThemeSwitch from "./theme-switch";
-import { useThemeContext } from "@/app/context/theme-context";
+import ThemeSwitch from "@/components/navigation/theme-switch";
+import { useThemeContext } from "@/context/theme-context";
 import Image from "next/image";
 import GithubLight from "@/public/GitHub_light.svg";
 import GithubDark from "@/public/GitHub_dark.svg";
@@ -10,8 +10,8 @@ import LinkedinLight from "@/public/Linkedin_light.svg";
 import LinkedinDark from "@/public/Linkedin_dark.svg";
 import TwitterLight from "@/public/Twitter_light.svg";
 import TwitterDark from "@/public/Twitter_dark.svg";
-import MenuComponent from "./menu";
-import MenuButton from "./menu-button";
+import MenuComponent from "@/components/navigation/menu";
+import MenuButton from "@/components/navigation/menu-button";
 import { m } from "motion/react";
 import Link from "next/link";
 import Lottie from "lottie-react";

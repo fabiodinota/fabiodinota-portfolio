@@ -1,4 +1,4 @@
-import { useThemeContext } from "@/app/context/theme-context";
+import { useThemeContext } from "@/context/theme-context";
 import { cn } from "@/lib/utils";
 
 interface SkillCardProps {
