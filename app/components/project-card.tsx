@@ -3,8 +3,6 @@ import { StaticImageData } from "next/image";
 import { useThemeContext } from "@/app/context/theme-context";
 import Link from "next/link";
 import { m } from "motion/react";
-import { useMediaQuery } from "react-responsive";
-import LinkOrDiv from "./link-or-div";
 import { cn } from "@/lib/utils";
 import { fadeInUp } from "@/lib/motion";
 
@@ -30,7 +28,6 @@ const ProjectCard = ({
 	caseStudySlug,
 }: ProjectCardProps) => {
 	const { colors, border } = useThemeContext();
-	const isXS = useMediaQuery({ query: "(max-width: 475px)" });
 
 	return (
 		<m.div
@@ -42,7 +39,7 @@ const ProjectCard = ({
 					<Image
 						quality={100}
 						src={image}
-						priority
+						priority={index <= 2}
 						className="aspect-video w-full h-full object-cover"
 						alt={title}
 					/>
@@ -51,7 +48,7 @@ const ProjectCard = ({
 				<Image
 					quality={100}
 					src={image}
-					priority
+					priority={index <= 2}
 					className="aspect-video w-full h-full object-cover"
 					alt={title}
 				/>
@@ -65,14 +62,14 @@ const ProjectCard = ({
 				{/* Title row with tags on the right */}
 				<div className="flex flex-row justify-between items-start gap-4">
 					<div className="flex flex-col gap-0.5 shrink-0">
-						<h4
+						<h3
 							className={cn(
 								"font-medium leading-tight text-[20px]",
 								colors.primary,
 							)}
 						>
 							{title}
-						</h4>
+						</h3>
 						<p
 							className={cn(
 								"font-extralight text-[16px]",
@@ -122,6 +119,7 @@ const ProjectCard = ({
 							)}
 							href={link}
 							target="_blank"
+							rel="noopener noreferrer"
 						>
 							View
 						</Link>

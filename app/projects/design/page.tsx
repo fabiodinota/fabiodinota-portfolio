@@ -3,6 +3,7 @@
 import React from "react";
 import { useThemeContext } from "@/app/context/theme-context";
 import ProjectCard from "@/app/components/project-card";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { m } from "motion/react";
 import { DesignProjectsList } from "@/app/data/projects";
@@ -35,6 +36,39 @@ function DesignProjects() {
 					Design Projects
 				</h1>
 				<GoBackButton onClick={router.back} />
+			</m.div>
+			<m.div
+				initial={{ opacity: 0, y: 30 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 0.16, ease: EASE_SMOOTH }}
+				className={cn(
+					"px-5 pt-4 max-w-[900px] flex flex-col gap-3 text-[15px] md:text-[17px] font-extralight leading-relaxed",
+					colors.primary,
+				)}
+			>
+				<p>
+					These design projects cover portfolio interfaces, brand
+					pages, mobile app concepts, and product prototypes. The work
+					focuses on hierarchy, usability, interaction, visual systems,
+					and the handoff details that make a design practical to
+					build in React, Next.js, or another modern frontend stack.
+				</p>
+				<p>
+					For more technical builds, view the main{" "}
+					<Link className="underline" href="/projects">
+						projects portfolio
+					</Link>
+					, read more{" "}
+					<Link className="underline" href="/about">
+						about my background
+					</Link>
+					, or{" "}
+					<Link className="underline" href="/contact">
+						contact me
+					</Link>{" "}
+					about a UI audit, redesign, prototype, or product design
+					project.
+				</p>
 			</m.div>
 
 			<div

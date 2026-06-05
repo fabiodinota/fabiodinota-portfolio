@@ -8,7 +8,7 @@ import GoBackButton from "./components/go-back-button";
 import { cn } from "@/lib/utils";
 
 function NotFound() {
-	const { theme, colors, border } = useThemeContext();
+	const { colors, border } = useThemeContext();
 	const router = useRouter();
 
 	return (

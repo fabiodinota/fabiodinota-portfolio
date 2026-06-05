@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import HomeProjectCard from "./home-project-card";
 import { FeaturedProjectsList } from "@/app/data/projects";
 
@@ -15,7 +15,6 @@ const Marquee = () => {
 	const dragStartOffsetRef = useRef(0);
 	const lastPointerXRef = useRef(0);
 	const velocityRef = useRef(0);
-	const [, forceRender] = useState(0);
 
 	// Width of one set of cards (half the track)
 	const getSetWidth = useCallback(() => {
@@ -36,33 +35,32 @@ const Marquee = () => {
 		[getSetWidth],
 	);
 
-	// Animation loop: auto-scroll + momentum decay
-	const animate = useCallback(() => {
-		if (!isDraggingRef.current) {
-			// Apply momentum
-			if (Math.abs(velocityRef.current) > 0.1) {
-				offsetRef.current += velocityRef.current;
-				velocityRef.current *= 0.95; // decay
-			} else {
-				velocityRef.current = 0;
-				// Auto-scroll when no momentum
-				offsetRef.current -= AUTO_SCROLL_SPEED;
-			}
-		}
-
-		offsetRef.current = wrapOffset(offsetRef.current);
-
-		if (trackRef.current) {
-			trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
-		}
-
-		rafRef.current = requestAnimationFrame(animate);
-	}, [wrapOffset]);
-
 	useEffect(() => {
+		const animate = () => {
+			if (!isDraggingRef.current) {
+				// Apply momentum
+				if (Math.abs(velocityRef.current) > 0.1) {
+					offsetRef.current += velocityRef.current;
+					velocityRef.current *= 0.95; // decay
+				} else {
+					velocityRef.current = 0;
+					// Auto-scroll when no momentum
+					offsetRef.current -= AUTO_SCROLL_SPEED;
+				}
+			}
+
+			offsetRef.current = wrapOffset(offsetRef.current);
+
+			if (trackRef.current) {
+				trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+			}
+
+			rafRef.current = requestAnimationFrame(animate);
+		};
+
 		rafRef.current = requestAnimationFrame(animate);
 		return () => cancelAnimationFrame(rafRef.current);
-	}, [animate]);
+	}, [wrapOffset]);
 
 	// ─── Pointer (mouse + touch) events ────────────────────────────
 

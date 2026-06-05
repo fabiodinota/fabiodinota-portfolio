@@ -3,6 +3,7 @@
 import React from "react";
 import { useThemeContext } from "@/app/context/theme-context";
 import ProjectCard from "@/app/components/project-card";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { m } from "motion/react";
 import { OtherProjectsList } from "@/app/data/projects";
@@ -35,6 +36,40 @@ function OtherProjects() {
 					Other Projects
 				</h1>
 				<GoBackButton onClick={router.back} />
+			</m.div>
+			<m.div
+				initial={{ opacity: 0, y: 30 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 0.16, ease: EASE_SMOOTH }}
+				className={cn(
+					"px-5 pt-4 max-w-[900px] flex flex-col gap-3 text-[15px] md:text-[17px] font-extralight leading-relaxed",
+					colors.primary,
+				)}
+			>
+				<p>
+					This section collects additional web design and development
+					work, including agency websites, medical websites, crypto
+					landing pages, and smaller client-facing builds. The projects
+					are varied, but they share the same priorities: clear
+					information architecture, responsive layouts, dependable
+					implementation, and interfaces that match the business goal.
+				</p>
+				<p>
+					For larger technical case studies, return to the{" "}
+					<Link className="underline" href="/projects">
+						project overview
+					</Link>
+					, explore{" "}
+					<Link className="underline" href="/projects/design">
+						UI/UX design work
+					</Link>
+					, or{" "}
+					<Link className="underline" href="/contact">
+						get in touch
+					</Link>{" "}
+					about a website, product interface, or frontend engineering
+					project.
+				</p>
 			</m.div>
 
 			<div

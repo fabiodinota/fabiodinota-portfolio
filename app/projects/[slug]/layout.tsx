@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AllProjects } from "@/app/data/projects";
+import { createPageMetadata } from "@/lib/seo";
 
 type Params = Promise<{ slug: string }>;
 
@@ -13,14 +14,18 @@ export async function generateMetadata({
 
 	if (!project) {
 		return {
-			title: "Project Not Found",
+			title: {
+				absolute: "Project Not Found | Fabio Di Nota Portfolio",
+			},
 		};
 	}
 
-	return {
-		title: `${project.title} — Case Study`,
-		description: project.summary,
-	};
+	return createPageMetadata({
+		title: `${project.title} Case Study | ${project.description}`,
+		description: `${project.summary} Read how Fabio Di Nota approached the product, interface, and technical decisions behind this portfolio project.`,
+		path: `/projects/${slug}`,
+		keywords: [project.title, project.description, ...project.tags],
+	});
 }
 
 export default function CaseStudyLayout({

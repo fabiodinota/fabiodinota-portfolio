@@ -1,5 +1,6 @@
 import { getPostBySlug, getPostContent, getPostSlugs } from "@/lib/blog";
 import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import BlogPostClient from "./BlogPostClient";
 
 interface BlogPostPageProps {
@@ -16,15 +17,23 @@ export async function generateMetadata({
 }: BlogPostPageProps): Promise<Metadata> {
 	const { slug } = await params;
 	const post = getPostBySlug(slug);
-	return {
-		title: post.title,
+	const pageMetadata = createPageMetadata({
+		title: `${post.title} | Fabio Di Nota Blog`,
 		description: post.description,
+		path: `/blog/${slug}`,
+		image: post.image,
+		type: "article",
+		keywords: post.tags,
+	});
+
+	return {
+		...pageMetadata,
 		openGraph: {
+			...pageMetadata.openGraph,
 			title: post.title,
 			description: post.description,
 			type: "article",
 			publishedTime: post.date,
-			images: post.image ? [{ url: post.image }] : undefined,
 		},
 	};
 }

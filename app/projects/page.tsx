@@ -3,6 +3,7 @@
 import React from "react";
 import { m } from "motion/react";
 import { useThemeContext } from "@/app/context/theme-context";
+import Link from "next/link";
 import ProjectCard from "@/app/components/project-card";
 import ProjectFolderCard from "@/app/components/project-folder-card";
 import { EngineeringProjects, ProfessionalProjects } from "@/app/data/projects";
@@ -32,6 +33,46 @@ function Projects() {
 			>
 				Complex technical problems solved from scratch.
 			</m.p>
+			<m.div
+				{...fadeInUp(0.16)}
+				className={cn(
+					"px-5 pt-4 max-w-[900px] flex flex-col gap-3 text-[15px] md:text-[17px] font-extralight leading-relaxed",
+					colors.primary,
+				)}
+			>
+				<p>
+					This portfolio brings together full-stack engineering,
+					frontend architecture, UI/UX design, product strategy, and
+					creative experiments. The engineering projects focus on
+					technical systems such as routing logic, real-time state,
+					geometry, and application structure. The design and
+					professional work shows how those systems become polished
+					interfaces for real users.
+				</p>
+				<p>
+					Start with{" "}
+					<Link className="underline" href="/projects/the-velox">
+						The Velox
+					</Link>{" "}
+					for a deeper case study, browse the{" "}
+					<Link className="underline" href="/projects/design">
+						design projects
+					</Link>
+					, explore{" "}
+					<Link className="underline" href="/projects/school">
+						school work
+					</Link>
+					, or see additional{" "}
+					<Link className="underline" href="/projects/other">
+						client and web projects
+					</Link>
+					. To discuss a similar build, use the{" "}
+					<Link className="underline" href="/contact">
+						contact page
+					</Link>
+					.
+				</p>
+			</m.div>
 
 			<div
 				className={cn(
@@ -55,7 +96,7 @@ function Projects() {
 				))}
 			</div>
 
-			<m.h1
+			<m.h2
 				{...fadeInUp(4 * 0.08)}
 				className={cn(
 					"p-5 pb-0 text-[26px] xs:text-[32px] md:text-[36px] font-semibold",
@@ -63,7 +104,7 @@ function Projects() {
 				)}
 			>
 				Professional & Design Projects
-			</m.h1>
+			</m.h2>
 			<m.p
 				{...fadeInUp(4 * 0.08 + 0.04)}
 				className={cn(
@@ -96,7 +137,7 @@ function Projects() {
 				))}
 			</div>
 
-			<m.h1
+			<m.h2
 				{...fadeInUp(13 * 0.08)}
 				className={cn(
 					"p-5 pb-0 text-[26px] xs:text-[32px] md:text-[36px] font-semibold",
@@ -104,7 +145,7 @@ function Projects() {
 				)}
 			>
 				Other Projects
-			</m.h1>
+			</m.h2>
 
 			<div
 				className={cn(

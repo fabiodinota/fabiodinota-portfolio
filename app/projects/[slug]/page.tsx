@@ -7,6 +7,7 @@ import { useRouter, useParams } from "next/navigation";
 import { AllProjects } from "@/app/data/projects";
 import GoBackButton from "@/app/components/go-back-button";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { EASE_SMOOTH, fadeInUp } from "@/lib/motion";
 
@@ -151,6 +152,58 @@ export default function CaseStudyPage() {
 						</p>
 					</div>
 				)}
+
+				<div className="flex flex-col gap-2">
+					<h2
+						className={cn(
+							"text-[20px] font-medium",
+							colors.primary,
+						)}
+					>
+						Approach
+					</h2>
+					<p
+						className={cn(
+							"text-[15px] font-extralight leading-relaxed max-w-[700px]",
+							colors.primary,
+						)}
+					>
+						This project reflects the way I combine software
+						engineering and interface design: clarify the product
+						problem, shape the user flow, choose the technical
+						constraints, then build a visual system that can support
+						real interaction. The work connects product planning,
+						frontend implementation, responsive UI, and maintainable
+						code rather than treating design and engineering as
+						separate phases.
+					</p>
+					<p
+						className={cn(
+							"text-[15px] font-extralight leading-relaxed max-w-[700px]",
+							colors.primary,
+						)}
+					>
+						To compare this case study with broader portfolio work,
+						return to{" "}
+						<Link className="underline" href="/projects">
+							all projects
+						</Link>
+						, browse{" "}
+						<Link className="underline" href="/projects/design">
+							design projects
+						</Link>
+						, read more{" "}
+						<Link className="underline" href="/about">
+							about my background
+						</Link>
+						, or{" "}
+						<Link className="underline" href="/contact">
+							contact me
+						</Link>{" "}
+						about a similar product, UI audit, or frontend
+						engineering brief.
+					</p>
+				</div>
 
 				{/* Placeholder */}
 				<div

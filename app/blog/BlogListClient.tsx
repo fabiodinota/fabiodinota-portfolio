@@ -38,13 +38,43 @@ export default function BlogListClient({ posts }: BlogListClientProps) {
 					</h1>
 					<p
 						className={cn(
-							"font-extralight text-[16px] md:text-[20px] mb-8",
+							"font-extralight text-[16px] md:text-[20px] mb-4",
 							colors.secondary,
 						)}
 					>
 						Thoughts on software engineering, design, and
 						technology.
 					</p>
+					<div
+						className={cn(
+							"font-extralight text-[15px] md:text-[17px] leading-relaxed mb-8 flex flex-col gap-3",
+							colors.primary,
+						)}
+					>
+						<p>
+							This blog collects practical notes from my work as a
+							software engineer and UI/UX designer: frontend
+							architecture, React and Next.js decisions, interface
+							details, prototyping, design systems, and the tradeoffs
+							that appear when projects move from idea to production.
+						</p>
+						<p>
+							For applied examples, browse the{" "}
+							<Link className="underline" href="/projects">
+								project portfolio
+							</Link>
+							, read more{" "}
+							<Link className="underline" href="/about">
+								about my background
+							</Link>
+							, or{" "}
+							<Link className="underline" href="/contact">
+								contact me
+							</Link>{" "}
+							about a web application, UI audit, or frontend
+							consulting brief.
+						</p>
+					</div>
 				</m.div>
 
 				{posts.length === 0 ? (

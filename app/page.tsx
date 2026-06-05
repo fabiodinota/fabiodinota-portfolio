@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { EASE_SMOOTH, slideDown } from "@/lib/motion";
 
 export default function Home() {
-	const { theme, colors, border } = useThemeContext();
+	const { colors, border } = useThemeContext();
 
 	const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
 	const isMobileHeight = useMediaQuery({ query: "(max-height: 800px)" });
@@ -17,7 +17,7 @@ export default function Home() {
 
 
 	return (
-		<div className="w-full h-full">
+		<div className="w-full min-h-full">
 			{/* Hero section */}
 			<m.div
 				initial={{ height: "100%" }}
@@ -125,6 +125,54 @@ export default function Home() {
 					<Marquee />
 				</div>
 			</m.div>
+			<section
+				className={cn(
+					"border-t p-5 md:p-10 flex flex-col gap-5",
+					border,
+					colors.primary,
+				)}
+			>
+				<div className="max-w-[900px] flex flex-col gap-4">
+					<h2 className="text-[26px] md:text-[36px] font-semibold">
+						Software engineering, UI design, and product delivery
+					</h2>
+					<p className="text-[16px] md:text-[18px] font-extralight leading-relaxed">
+						I build practical digital products from first sketch to
+						production. My work sits between full-stack engineering
+						and interface design: React and Next.js applications,
+						TypeScript systems, responsive UI, interaction design,
+						prototypes, and the product thinking needed to make
+						those pieces useful.
+					</p>
+					<p className="text-[16px] md:text-[18px] font-extralight leading-relaxed">
+						The portfolio includes case studies such as{" "}
+						<Link className="underline" href="/projects/the-velox">
+							The Velox
+						</Link>
+						, a full-stack transit platform, alongside client sites,
+						design explorations, mobile concepts, and creative lab
+						work. For a broader view of the process, browse the{" "}
+						<Link className="underline" href="/projects">
+							projects
+						</Link>{" "}
+						or read the{" "}
+						<Link className="underline" href="/blog">
+							blog
+						</Link>
+						.
+					</p>
+					<p className="text-[16px] md:text-[18px] font-extralight leading-relaxed">
+						If you need a web application, a UI audit, or technical
+						advice on a frontend stack,{" "}
+						<Link className="underline" href="/contact">
+							contact me
+						</Link>{" "}
+						with a short brief. I am based in Antwerp, Belgium and
+						work with teams that value polished interfaces, clear
+						systems, and code that can keep moving after launch.
+					</p>
+				</div>
+			</section>
 		</div>
 	);
 }

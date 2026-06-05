@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useThemeContext } from "@/app/context/theme-context";
 import Image from "next/image";
+import Link from "next/link";
 import PlaceholderLight from "@/public/About_main.png";
 import PlaceholderDark from "@/public/About_main_white.png";
 import ExperienceCard from "@/app/components/experience-card";
@@ -156,6 +157,27 @@ function About() {
 					you&apos;re looking for a creative problem-solver who&apos;s
 					up-to-date with the latest tech, feel free to reach out.
 					Let&apos;s make something awesome together!
+				</p>
+				<p
+					className={cn(
+						"sm:text-justify pt-4 font-extralight",
+						colors.primary,
+					)}
+				>
+					For examples of that work, browse my{" "}
+					<Link className="underline" href="/projects">
+						project portfolio
+					</Link>
+					, start with{" "}
+					<Link className="underline" href="/projects/the-velox">
+						The Velox case study
+					</Link>
+					, or{" "}
+					<Link className="underline" href="/contact">
+						contact me
+					</Link>{" "}
+					for web application builds, UI audits, and frontend
+					consulting.
 				</p>
 				<div className="hidden xs:block mt-6 flex-grow w-full lg:w-[400px] pb-10 relative h-full min-h-[400px] lg:h-[400px] z-auto">
 					<Image

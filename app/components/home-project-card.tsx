@@ -67,7 +67,7 @@ const HomeProjectCard = ({
 					fill
 					className="aspect-video object-cover no-select pointer-events-none"
 					alt={title}
-					priority
+					priority={index < 2}
 					draggable={false}
 					onDragStart={(e) => e.preventDefault()}
 				/>
@@ -81,14 +81,14 @@ const HomeProjectCard = ({
 				)}
 			>
 				<div className="flex flex-col justify-center w-full">
-					<h4
+					<h3
 						className={cn(
 							"font-extralight leading-tight child-marquee text-[20px] whitespace-nowrap w-full truncate",
 							colors.primary,
 						)}
 					>
 						{title}
-					</h4>
+					</h3>
 					<p
 						className={cn(
 							"font-extralight text-[14px] whitespace-nowrap w-full truncate",
@@ -106,6 +106,7 @@ const HomeProjectCard = ({
 					)}
 					href={primaryHref}
 					target={isInternal ? undefined : "_blank"}
+					rel={isInternal ? undefined : "noopener noreferrer"}
 				>
 					{caseStudySlug ? "Read" : "View"}
 				</Link>

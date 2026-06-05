@@ -1,74 +1,15 @@
 "use client";
 
-import React, { FormEvent, useState } from "react";
+import React from "react";
 import { useThemeContext } from "@/app/context/theme-context";
-import SubmitButton, {
-	InputField,
-	Select,
-	TextArea,
-} from "@/app/components/contact-form";
-import Image from "next/image";
-import ContactImageWhite from "@/public/Contact_white.png";
-import ContactImageBlack from "@/public/Contact_black.png";
-import axios from "axios";
+import Terminal from "@/app/components/terminal";
+import Link from "next/link";
+import { m } from "motion/react";
 import { cn } from "@/lib/utils";
+import { EASE_SMOOTH } from "@/lib/motion";
 
-type ContactInfoSelectType =
-	| "Commission"
-	| "Question"
-	| "Collaboration"
-	| "Bug Report"
-	| "Other";
-
-interface ContactInfo {
-	type: ContactInfoSelectType;
-	name: string;
-	email: string;
-	subject: string;
-	budget?: string;
-	message: string;
-}
-
-function Contact() {
-	const { colors, border, theme } = useThemeContext();
-
-	const [contactInfo, setContactInfo] = useState<ContactInfo>({
-		type: "Commission",
-		name: "",
-		email: "",
-		subject: "",
-		budget: "",
-		message: "",
-	});
-
-	const [message, setMessage] = useState<string>("");
-
-	const handleSubmit = (e: FormEvent) => {
-		e.preventDefault();
-
-		if (
-			contactInfo.name === "" ||
-			contactInfo.email === "" ||
-			contactInfo.subject === "" ||
-			contactInfo.message === ""
-		) {
-			setMessage("Please fill out all the required fields.");
-			return;
-		}
-
-		axios
-			.post("/api/send", contactInfo, {
-				headers: { "Content-Type": "application/json" },
-			})
-			.then(() => {
-				setMessage("Message sent successfully!");
-			})
-			.catch(() => {
-				setMessage(
-					"Something went wrong, please try again later.",
-				);
-			});
-	};
+export default function Contact() {
+	const { colors, border } = useThemeContext();
 
 	return (
 		<>
@@ -87,128 +28,80 @@ function Contact() {
 
 			<div
 				className={cn(
-					"h-full w-full overflow-y-scroll relative flex flex-row justify-center items-start top-0",
+					"h-full w-full overflow-hidden relative flex flex-col items-center justify-center",
 					colors.primary,
 				)}
 			>
-				<div className="w-full max-w-[1300px] h-full p-5 lg:px-10 flex flex-row items-start relative top-[80px] lg:top-[2em] justify-evenly space-x-10">
-					<div className="flex flex-col gap-5 justify-start items-start w-full lg:w-[60%] overflow-y-scroll lg:pb-5">
-						<div className="hidden lg:block">
-							<h1
-								className={cn(
-									"text-[30px] font-normal text-left",
-									colors.primary,
-								)}
-							>
-								Contact Me
-							</h1>
-							<p
-								className={cn(
-									"font-extralight text-[20px]",
-									colors.primary,
-								)}
-							>
-								Get in touch with me! I will get back to you
-								as soon as possible.
-							</p>
-						</div>
-						<Select
-							name="type"
-							value={contactInfo.type}
-							onChange={(e) =>
-								setContactInfo({
-									...contactInfo,
-									type: e.currentTarget
-										.value as ContactInfoSelectType,
-								})
-							}
-						/>
-						<InputField
-							placeholder="Name"
-							name="name"
-							onChange={(e) =>
-								setContactInfo({
-									...contactInfo,
-									name: e.currentTarget.value,
-								})
-							}
-						/>
-						<InputField
-							placeholder="Email"
-							name="email"
-							type="email"
-							onChange={(e) =>
-								setContactInfo({
-									...contactInfo,
-									email: e.currentTarget.value,
-								})
-							}
-						/>
-						<InputField
-							placeholder="Subject"
-							name="subject"
-							onChange={(e) =>
-								setContactInfo({
-									...contactInfo,
-									subject: e.currentTarget.value,
-								})
-							}
-						/>
-						{contactInfo.type === "Commission" && (
-							<InputField
-								placeholder="Budget"
-								name="budget"
-								onChange={(e) =>
-									setContactInfo({
-										...contactInfo,
-										budget: e.currentTarget.value,
-									})
-								}
-							/>
-						)}
-						<TextArea
-							placeholder="Message"
-							name="message"
-							onChange={(e) =>
-								setContactInfo({
-									...contactInfo,
-									message: e.currentTarget.value,
-								})
-							}
-						/>
-						<SubmitButton
-							text="Send"
-							onClick={(e) => handleSubmit(e)}
-						/>
-						<p
+				<m.div
+					initial={{ opacity: 0, y: 30 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8, ease: EASE_SMOOTH }}
+					className="w-full h-full p-5 pt-[100px] lg:pt-5 lg:px-10 flex flex-col"
+				>
+					<div className="hidden lg:block mb-4">
+						<h1
 							className={cn(
-								"text-[20px] font-extralight",
-								message === "Message sent successfully!"
-									? "text-green-500"
-									: "text-red-600",
+								"text-[30px] font-normal text-left",
+								colors.primary,
 							)}
 						>
-							{message}
+							Contact Me
+						</h1>
+						<p
+							className={cn(
+								"font-extralight text-[18px]",
+								colors.primary,
+							)}
+						>
+							type{" "}
+							<code className="font-mono text-[14px] px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10">
+								help
+							</code>{" "}
+							to get started.
 						</p>
 					</div>
-					<div className="relative w-[500px] h-[750px] hidden lg:block">
-						<Image
-							src={
-								theme === "dark"
-									? ContactImageBlack
-									: ContactImageWhite
-							}
-							className="object-contain"
-							fill
-							quality={100}
-							sizes="500px"
-							alt="Contact Me"
-						/>
+
+					<section
+						className={cn(
+							"mb-5 border px-5 py-4 flex flex-col gap-3",
+							border,
+							colors.primary,
+						)}
+					>
+						<h2 className="text-[20px] font-normal">
+							Web apps, UI audits, and technical direction
+						</h2>
+						<p className="font-extralight leading-relaxed">
+							Use this page to start a focused conversation about a
+							product, interface, or engineering problem. I work on
+							full-stack web applications, React and Next.js
+							frontends, product design systems, UI/UX audits, and
+							technical strategy for teams that need both design
+							judgment and implementation detail.
+						</p>
+						<p className="font-extralight leading-relaxed">
+							For context before reaching out, browse my{" "}
+							<Link className="underline" href="/projects">
+								project portfolio
+							</Link>
+							, read more{" "}
+							<Link className="underline" href="/about">
+								about my background
+							</Link>
+							, or start with{" "}
+							<Link className="underline" href="/projects/the-velox">
+								The Velox case study
+							</Link>
+							. The terminal below routes your message by service
+							type so the brief arrives with the right context.
+						</p>
+					</section>
+
+					<div className="flex-1 min-h-0">
+						<Terminal />
 					</div>
-				</div>
+				</m.div>
 			</div>
 		</>
 	);
 }
-
-export default Contact;

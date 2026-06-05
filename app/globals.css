@@ -352,3 +352,93 @@
 	}
 }
 
+/* ------------------------------------------------------------------ */
+/*  Terminal contact form                                              */
+/* ------------------------------------------------------------------ */
+
+.terminal {
+	background: #0c0c0c;
+	font-family: ui-monospace, "SF Mono", "Cascadia Code", "Segoe UI Mono",
+		monospace;
+}
+
+.terminal-titlebar {
+	background: #1a1a1a;
+}
+
+.terminal-body {
+	scrollbar-width: none;
+}
+
+.terminal-text {
+	color: #d4d4d4;
+}
+
+.terminal-line {
+	color: #d4d4d4;
+	min-height: 1.5em;
+}
+
+.terminal-system {
+	color: #6b7280;
+}
+
+.terminal-prompt-line {
+	color: #d4d4d4;
+}
+
+.terminal-prompt-label {
+	color: #22c55e;
+}
+
+.terminal-error {
+	color: #ef4444;
+}
+
+.terminal-success {
+	color: #22c55e;
+}
+
+.terminal-progress {
+	color: #facc15;
+}
+
+.terminal-input {
+	color: #d4d4d4;
+}
+
+.terminal-input::placeholder {
+	color: #4b5563;
+}
+
+/* Blinking block cursor */
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+.terminal-cursor {
+	display: inline-block;
+	width: 8px;
+	height: 1.2em;
+	background: #22c55e;
+	animation: blink 1s step-end infinite;
+	vertical-align: text-bottom;
+	margin-left: 1px;
+	flex-shrink: 0;
+}
+
+.terminal-textarea {
+	line-height: 1.5;
+	scrollbar-width: none;
+}
+
+.terminal-textarea::-webkit-scrollbar {
+	display: none;
+}
+

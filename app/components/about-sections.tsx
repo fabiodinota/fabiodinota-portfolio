@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ArrowDark from "@/public/Arrow_dark.svg";
 import ArrowLight from "@/public/Arrow_light.svg";
 import { m } from "motion/react";
@@ -62,6 +63,22 @@ export function AboutHero({
 					<br />I enjoy taking on new challenges and would be thrilled
 					to collaborate on exciting projects. Let&apos;s create
 					something awesome together!
+				</p>
+				<p className="sm:text-justify pt-4 font-extralight">
+					You can explore my{" "}
+					<Link className="underline" href="/projects">
+						engineering and design projects
+					</Link>
+					, read notes on the{" "}
+					<Link className="underline" href="/blog">
+						blog
+					</Link>
+					, or{" "}
+					<Link className="underline" href="/contact">
+						get in touch
+					</Link>{" "}
+					if you want help shaping a web application, interface, or
+					technical direction.
 				</p>
 			</m.div>
 			<m.div

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import ThemeSwitch from "./theme-switch";
 import { useThemeContext } from "@/app/context/theme-context";
 import Image from "next/image";
@@ -13,7 +13,6 @@ import TwitterDark from "@/public/Twitter_dark.svg";
 import MenuComponent from "./menu";
 import MenuButton from "./menu-button";
 import { m } from "motion/react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Lottie from "lottie-react";
 import LogoLottieWhite from "@/public/Logo_white.json";
@@ -49,22 +48,12 @@ const socialTransition = { ...springTransition, duration: 0.5 };
 /* ---------- MainLayout ---------- */
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
-	const pathname = usePathname();
-	const { colors, theme, border } = useThemeContext();
+	const { colors, theme } = useThemeContext();
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const handleMenuClick = () => {
 		setMenuOpen(!menuOpen);
 	};
-
-	const [logoSwitch, setLogoSwitch] = useState(false);
-
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setLogoSwitch(true);
-		}, 1000);
-		return () => clearTimeout(timer);
-	}, []);
 
 	const borderClass = theme === "dark" ? "border-white" : "border-black";
 

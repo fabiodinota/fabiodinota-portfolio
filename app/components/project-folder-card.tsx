@@ -27,14 +27,14 @@ const ProjectFolderCard = ({ title, link, index }: ProjectFolderCardProps) => {
 				)}
 			>
 				<div className="flex flex-col justify-center">
-					<h4
+					<h3
 						className={cn(
 							"font-extralight leading-tight child-project text-[20px]",
 							colors.primary,
 						)}
 					>
 						{title}
-					</h4>
+					</h3>
 				</div>
 				<Link
 					className={cn(
