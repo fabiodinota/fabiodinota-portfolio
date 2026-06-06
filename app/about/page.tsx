@@ -7,10 +7,14 @@ import Link from "next/link";
 import PlaceholderLight from "@/public/About_main.png";
 import PlaceholderDark from "@/public/About_main_white.png";
 import ExperienceCard from "@/features/about/experience-card";
-import AzuriteLogo from "@/public/Azurite_logo_experience.png";
+import CrazzleLogo from "@/public/Crazzle_logo_experience.png";
+import DataIntuitiveLogo from "@/public/DataIntuitive_logo_experience.png";
 import EDRLogo from "@/public/EDR_logo_experience.png";
 import FabiLogo from "@/public/Fabi_logo_experience.png";
 import GrowiiLogo from "@/public/Growii_logo_experience.png";
+import HeroLinkLogo from "@/public/HeroLink_logo_experience.png";
+import MobileLockerLogo from "@/public/MobileLocker_logo_experience.png";
+import MSCLogo from "@/public/MSC_logo_experience.png";
 import SkillCard from "@/components/ui/skill-card";
 import {
 	AboutHero,
@@ -18,6 +22,88 @@ import {
 	SkillsExperiencePanel,
 } from "@/features/about/about-sections";
 import { cn } from "@/lib/utils";
+
+const experienceItems = [
+	{
+		title: "Frontend Developer",
+		company: "Data Intuitive",
+		employmentType: "Self-employed",
+		period: "Apr 2025 - Present · 1 yr 3 mos",
+		location: "Remote",
+		skills: "Figma, Adobe Creative Suite and +2 skills",
+		Logo: DataIntuitiveLogo,
+	},
+	{
+		title: "Freelance Software Engineer & Designer",
+		company: "Fabio Di Nota Software",
+		employmentType: "Self-employed",
+		period: "Nov 2019 - Present · 6 yrs 8 mos",
+		location: "Antwerp, Flemish Region, Belgium · On-site",
+		skills: "Adobe Creative Suite, TypeScript and +3 skills",
+		Logo: FabiLogo,
+		link: "https://fabiodinota.com",
+	},
+	{
+		title: "Casino Croupier",
+		company: "Crazzle Casino Events",
+		employmentType: "Part-time",
+		period: "Sep 2024 - Present · 1 yr 10 mos",
+		location: "Vilvoorde, Flemish Region, Belgium · On-site",
+		Logo: CrazzleLogo,
+	},
+	{
+		title: "Information Technology Intern",
+		company: "MSC Mediterranean Shipping Company",
+		employmentType: "Internship",
+		period: "Jul 2025 · 1 mo",
+		location: "Antwerp, Flemish Region, Belgium · On-site",
+		Logo: MSCLogo,
+	},
+	{
+		title: "Warehouse Employee",
+		company: "Mobile Locker NV",
+		employmentType: "Apprenticeship",
+		period: "Aug 2024 - Sep 2024 · 2 mos",
+		location: "Antwerp, Flemish Region, Belgium · On-site",
+		Logo: MobileLockerLogo,
+	},
+	{
+		title: "Frontend Developer",
+		company: "Hero Link: life-saving devices",
+		employmentType: "Freelance",
+		period: "Aug 2024 - Sep 2024 · 2 mos",
+		location: "United States · Remote",
+		Logo: HeroLinkLogo,
+	},
+	{
+		title: "Data Entry & Analyst",
+		company: "EDR Antwerp Shipyard",
+		employmentType: "Internship",
+		period: "Jul 2023 - Sep 2023 · 3 mos",
+		location: "Antwerp, Flemish Region, Belgium · On-site",
+		Logo: EDRLogo,
+		link: "https://edr-antwerp.be",
+	},
+	{
+		title: "Data Entry & Analyst",
+		company: "EDR Antwerp Shipyard",
+		employmentType: "Internship",
+		period: "Jul 2022 - Sep 2022 · 3 mos",
+		location: "Antwerp, Flemish Region, Belgium · On-site",
+		Logo: EDRLogo,
+		link: "https://edr-antwerp.be",
+	},
+	{
+		title: "Software Engineer",
+		company: "GROWII",
+		employmentType: "Contract",
+		period: "May 2022 - Aug 2022 · 4 mos",
+		location: "Worldwide",
+		skills: "Web Development, TypeScript and +3 skills",
+		Logo: GrowiiLogo,
+		link: "https://www.growii.es/",
+	},
+];
 
 function About() {
 	const { colors, border, theme } = useThemeContext();
@@ -77,36 +163,9 @@ function About() {
 
 	const experienceContent = (
 		<div className="space-y-5">
-			<ExperienceCard
-				title="Software Engineer & Designer"
-				description="Jan 2022 - Present"
-				Logo={AzuriteLogo}
-				link="https://azuritestudios.net"
-			/>
-			<ExperienceCard
-				title="Freelance Software Engineer & Designer"
-				description="Nov 2019 - Present"
-				Logo={FabiLogo}
-				link="https://fabiodinota.com"
-			/>
-			<ExperienceCard
-				title="Data Entry & Analyst"
-				description="Jul 2023 - Sep 2023"
-				Logo={EDRLogo}
-				link="https://edr-antwerp.be"
-			/>
-			<ExperienceCard
-				title="Data Entry & Analyst"
-				description="Jul 2022 - Sep 2022"
-				Logo={EDRLogo}
-				link="https://edr-antwerp.be"
-			/>
-			<ExperienceCard
-				title="Software Engineer"
-				description="May 2022 - Aug 2022"
-				Logo={GrowiiLogo}
-				link="https://www.growii.es/"
-			/>
+			{experienceItems.map((experience) => (
+				<ExperienceCard key={`${experience.company}-${experience.period}`} {...experience} />
+			))}
 		</div>
 	);
 
@@ -215,36 +274,12 @@ function About() {
 				)}
 			>
 				<div className="space-y-5">
-					<ExperienceCard
-						title="Software Engineer & Designer"
-						description="Jan 2022 - Present"
-						Logo={AzuriteLogo}
-						link="https://azuritestudios.net"
-					/>
-					<ExperienceCard
-						title="Freelance Software Engineer & Designer"
-						description="Nov 2019 - Present"
-						Logo={FabiLogo}
-						link="https://fabiodinota.com"
-					/>
-					<ExperienceCard
-						title="Data Entry & Analyst"
-						description="Jul 2023 - Sep 2023"
-						Logo={EDRLogo}
-						link="https://edr-antwerp.be"
-					/>
-					<ExperienceCard
-						title="Data Entry & Analyst"
-						description="Jul 2022 - Sep 2022"
-						Logo={EDRLogo}
-						link="https://edr-antwerp.be"
-					/>
-					<ExperienceCard
-						title="Software Engineer"
-						description="May 2022 - Aug 2022"
-						Logo={GrowiiLogo}
-						link="https://www.growii.es/"
-					/>
+					{experienceItems.map((experience) => (
+						<ExperienceCard
+							key={`${experience.company}-${experience.period}`}
+							{...experience}
+						/>
+					))}
 				</div>
 			</AccordionSection>
 

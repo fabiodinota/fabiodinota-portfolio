@@ -14,10 +14,8 @@ export default function Home() {
 	const isMobile = useMediaQuery({ query: "(max-width: 1280px)" });
 	const isMobileHeight = useMediaQuery({ query: "(max-height: 800px)" });
 
-
-
 	return (
-		<div className="w-full min-h-full">
+		<div className="h-full min-h-full w-full">
 			{/* Hero section */}
 			<m.div
 				initial={{ height: "100%" }}
@@ -86,7 +84,7 @@ export default function Home() {
 				{!isMobileHeight && (
 					<div
 						className={cn(
-							"h-[50%] xl:h-full border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%]",
+							"h-[40%] xl:h-full border-t-[1px] xl:border-r-[1px] w-full xl:w-[50%]",
 							"flex justify-center items-center flex-col p-5 gap-5",
 							border,
 						)}
@@ -117,62 +115,14 @@ export default function Home() {
 				)}
 				<div
 					className={cn(
-						"border-t-[1px] min-h-[200px] xl:h-full w-full xl:w-[50%] flex-grow overflow-x-hidden",
-						isMobileHeight ? "h-full" : "h-[100%]",
+						"border-t-[1px] min-h-[200px] xl:min-h-0 xl:h-full w-full xl:w-[50%] flex-grow overflow-x-hidden",
+						isMobileHeight ? "h-full" : "h-[60%]",
 						border,
 					)}
 				>
 					<Marquee />
 				</div>
 			</m.div>
-			<section
-				className={cn(
-					"border-t p-5 md:p-10 flex flex-col gap-5",
-					border,
-					colors.primary,
-				)}
-			>
-				<div className="max-w-[900px] flex flex-col gap-4">
-					<h2 className="text-[26px] md:text-[36px] font-semibold">
-						Software engineering, UI design, and product delivery
-					</h2>
-					<p className="text-[16px] md:text-[18px] font-extralight leading-relaxed">
-						I build practical digital products from first sketch to
-						production. My work sits between full-stack engineering
-						and interface design: React and Next.js applications,
-						TypeScript systems, responsive UI, interaction design,
-						prototypes, and the product thinking needed to make
-						those pieces useful.
-					</p>
-					<p className="text-[16px] md:text-[18px] font-extralight leading-relaxed">
-						The portfolio includes case studies such as{" "}
-						<Link className="underline" href="/projects/the-velox">
-							The Velox
-						</Link>
-						, a full-stack transit platform, alongside client sites,
-						design explorations, mobile concepts, and creative lab
-						work. For a broader view of the process, browse the{" "}
-						<Link className="underline" href="/projects">
-							projects
-						</Link>{" "}
-						or read the{" "}
-						<Link className="underline" href="/blog">
-							blog
-						</Link>
-						.
-					</p>
-					<p className="text-[16px] md:text-[18px] font-extralight leading-relaxed">
-						If you need a web application, a UI audit, or technical
-						advice on a frontend stack,{" "}
-						<Link className="underline" href="/contact">
-							contact me
-						</Link>{" "}
-						with a short brief. I am based in Antwerp, Belgium and
-						work with teams that value polished interfaces, clear
-						systems, and code that can keep moving after launch.
-					</p>
-				</div>
-			</section>
 		</div>
 	);
 }

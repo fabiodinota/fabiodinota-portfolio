@@ -2,7 +2,6 @@
 
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { useCallback, useRef, useSyncExternalStore } from "react";
 import { useThemeContext } from "@/context/theme-context";
 import LinkOrDiv from "@/components/ui/link-or-div";
 import { useMediaQuery } from "react-responsive";
@@ -15,11 +14,14 @@ interface HomeProjectCardProps {
 	image: StaticImageData;
 	index: number;
 	caseStudySlug?: string;
+	isDuplicate?: boolean;
 }
 
-function subscribeToResize(callback: () => void) {
-	window.addEventListener("resize", callback);
-	return () => window.removeEventListener("resize", callback);
+function getProjectHref(caseStudySlug?: string, link?: string) {
+	if (caseStudySlug) return `/projects/${caseStudySlug}`;
+
+	const trimmedLink = link?.trim();
+	return trimmedLink || null;
 }
 
 const HomeProjectCard = ({
@@ -29,42 +31,28 @@ const HomeProjectCard = ({
 	image,
 	index,
 	caseStudySlug,
+	isDuplicate = false,
 }: HomeProjectCardProps) => {
 	const { colors, border } = useThemeContext();
 
-	const widthRef = useRef<HTMLDivElement>(null);
-
-	const getWidth = useCallback(
-		() => widthRef.current?.offsetWidth ?? 0,
-		[],
-	);
-
-	const width = useSyncExternalStore(subscribeToResize, getWidth, () => 0);
-	const widthStyle = width + 2;
 	const isLG = useMediaQuery({ query: "(max-width: 1280px)" });
-
-	const primaryHref = caseStudySlug
-		? `/projects/${caseStudySlug}`
-		: link || "";
-
-	const isInternal = primaryHref.startsWith("/");
+	const primaryHref = getProjectHref(caseStudySlug, link);
+	const canLink = Boolean(primaryHref) && !isDuplicate;
+	const isInternal = primaryHref?.startsWith("/") ?? false;
 
 	return (
 		<div
-			style={{ width: widthStyle || undefined }}
 			className={cn(
-				"flex flex-col border min-w-[150px] xl:min-w-[270px] overflow-hidden select-none",
+				"flex h-full min-h-[160px] w-[min(78vw,420px)] shrink-0 flex-col overflow-hidden border select-none xl:min-h-0 xl:w-[clamp(270px,34vw,520px)]",
 				border,
 			)}
 		>
-			<div
-				ref={widthRef}
-				className="relative aspect-video h-full w-fit overflow-hidden select-none"
-			>
+			<div className="relative min-h-[80px] flex-1 overflow-hidden select-none">
 				<Image
 					src={image}
 					quality={100}
 					fill
+					sizes="(min-width: 1280px) 34vw, 78vw"
 					className="aspect-video object-cover no-select pointer-events-none"
 					alt={title}
 					priority={index < 2}
@@ -72,15 +60,19 @@ const HomeProjectCard = ({
 					onDragStart={(e) => e.preventDefault()}
 				/>
 			</div>
-			<LinkOrDiv
-				href={primaryHref}
-				isXS={isLG}
+			<div
 				className={cn(
-					"flex flex-row justify-between items-center px-5 py-3 border-t parent-marquee cursor-pointer",
+					"flex flex-row justify-between items-center px-5 py-3 border-t parent-marquee",
+					canLink && "cursor-pointer",
 					border,
 				)}
 			>
-				<div className="flex flex-col justify-center w-full">
+				<LinkOrDiv
+					href={primaryHref}
+					isXS={isLG && canLink}
+					className="flex min-w-0 flex-col justify-center w-full"
+					ariaLabel={`Open ${title}`}
+				>
 					<h3
 						className={cn(
 							"font-extralight leading-tight child-marquee text-[20px] whitespace-nowrap w-full truncate",
@@ -97,20 +89,23 @@ const HomeProjectCard = ({
 					>
 						{description}
 					</p>
-				</div>
-				<Link
-					className={cn(
-						"font-extralight hidden xl:grid place-items-center border px-5 py-2 hover:underline",
-						border,
-						colors.primary,
-					)}
-					href={primaryHref}
-					target={isInternal ? undefined : "_blank"}
-					rel={isInternal ? undefined : "noopener noreferrer"}
-				>
-					{caseStudySlug ? "Read" : "View"}
-				</Link>
-			</LinkOrDiv>
+				</LinkOrDiv>
+				{canLink && primaryHref && (
+					<Link
+						className={cn(
+							"font-extralight hidden xl:grid place-items-center border px-5 py-2 hover:underline",
+							border,
+							colors.primary,
+						)}
+						href={primaryHref}
+						target={isInternal ? undefined : "_blank"}
+						rel={isInternal ? undefined : "noopener noreferrer"}
+						aria-label={`${caseStudySlug ? "Read" : "View"} ${title}`}
+					>
+						{caseStudySlug ? "Read" : "View"}
+					</Link>
+				)}
+			</div>
 		</div>
 	);
 };

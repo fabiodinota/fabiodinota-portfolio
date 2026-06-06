@@ -31,7 +31,7 @@ export function AboutHero({
 	return (
 		<div
 			className={cn(
-				"lg:flex justify-center items-center flex-wrap md:flex-nowrap p-5 md:p-10 py-5 xl:gap-5 flex-row h-[50%] lg:h-full hidden flex-grow-0 custom-ease duration-700 overflow-x-hidden",
+				"lg:flex justify-center items-center flex-wrap md:flex-nowrap p-5 md:p-10 py-5 xl:gap-5 flex-row h-[30%] lg:h-full hidden flex-grow-0 custom-ease duration-700 overflow-x-hidden",
 				isOpenBig
 					? "scale-100 lg:max-xl:scale-90 2xl:scale-[1.2]"
 					: "lg:max-xl:scale-100 xl:scale-[1.10] 2xl:scale-[1.20]",
@@ -149,7 +149,7 @@ export function AccordionSection({
 		>
 			<div
 				className={cn(
-					"w-full absolute top-0 left-0 flex items-center justify-between flex-shrink-0 flex-grow-0 h-[80px] px-[30px]",
+					"w-full absolute top-0 left-0 flex items-center justify-between flex-shrink-0 flex-grow-0 h-[80px] border-white border-b-[1px] px-[30px]",
 					borderClasses,
 					colors.background,
 					border,
@@ -209,7 +209,7 @@ export function SkillsExperiencePanel({
 		<div
 			className={cn(
 				"hidden lg:flex duration-700 custom-ease origin-bottom w-full flex-col justify-start items-center relative z-10",
-				isOpenBig ? "h-[300px]" : "h-[60px] border-b-0",
+				isOpenBig ? "h-[40%]" : "h-[60px] border-b-0",
 			)}
 		>
 			<div
@@ -224,7 +224,7 @@ export function SkillsExperiencePanel({
 				tabIndex={0}
 				aria-expanded={isOpenBig}
 				className={cn(
-					"w-full h-[60px] flex justify-between cursor-pointer flex-shrink-0 items-center px-[30px] border-t-[1px]",
+					"w-full h-[60px] flex justify-between cursor-pointer flex-shrink-0 items-center px-[30px] border-y-[1px]",
 					isOpenBig
 						? "border-bottom-animation duration-0"
 						: "border-bottom-animation-out",

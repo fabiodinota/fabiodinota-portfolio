@@ -5,18 +5,55 @@ import { cn } from "@/lib/utils";
 
 interface ExperienceCardProps {
 	title: string;
-	description: string;
+	company: string;
+	period: string;
 	Logo: StaticImageData;
-	link: string;
+	employmentType?: string;
+	location?: string;
+	skills?: string;
+	link?: string;
 }
 
 const ExperienceCard = ({
 	title,
-	description,
+	company,
+	period,
 	Logo,
+	employmentType,
+	location,
+	skills,
 	link,
 }: ExperienceCardProps) => {
 	const { colors, border } = useThemeContext();
+	const content = (
+		<div className="w-full py-2 px-4 flex flex-col justify-center items-start group">
+			<h2
+				className={cn(
+					"text-[16px] group-hover:underline font-normal leading-tight",
+					colors.primary,
+				)}
+			>
+				{title}
+			</h2>
+			<p className={cn("text-[12px] font-extralight", colors.secondary)}>
+				{company}
+				{employmentType ? ` · ${employmentType}` : ""}
+			</p>
+			<p className={cn("text-[12px] font-extralight", colors.secondary)}>
+				{period}
+			</p>
+			{location && (
+				<p className={cn("text-[12px] font-extralight", colors.secondary)}>
+					{location}
+				</p>
+			)}
+			{skills && (
+				<p className={cn("text-[12px] font-extralight", colors.secondary)}>
+					{skills}
+				</p>
+			)}
+		</div>
+	);
 
 	return (
 		<div className={cn("w-full flex flex-row border", border, colors.primary)}>
@@ -31,26 +68,17 @@ const ExperienceCard = ({
 					src={Logo}
 					quality={100}
 					fill
-					className="object-cover object-center relative z-0"
+					className="object-contain object-center relative z-0 p-2"
 					alt={title}
 				/>
 			</div>
-			<Link
-				href={link}
-				className="w-full py-2 px-4 flex flex-col justify-center items-start group"
-			>
-				<h2
-					className={cn(
-						"text-[16px] group-hover:underline font-normal",
-						colors.primary,
-					)}
-				>
-					{title}
-				</h2>
-				<p className={cn("text-[12px] font-extralight", colors.secondary)}>
-					{description}
-				</p>
-			</Link>
+			{link ? (
+				<Link href={link} className="w-full">
+					{content}
+				</Link>
+			) : (
+				content
+			)}
 		</div>
 	);
 };

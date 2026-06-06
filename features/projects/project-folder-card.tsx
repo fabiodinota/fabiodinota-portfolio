@@ -18,15 +18,18 @@ const ProjectFolderCard = ({ title, link, index }: ProjectFolderCardProps) => {
 
 	return (
 		<m.div className="w-full" {...fadeInUp(index * 0.08)}>
-			<LinkOrDiv
-				href={link}
-				isXS={isXS}
+			<div
 				className={cn(
 					"flex flex-row w-full h-[70px] justify-between items-center px-5 border parent-project cursor-pointer",
 					border,
 				)}
 			>
-				<div className="flex flex-col justify-center">
+				<LinkOrDiv
+					href={link}
+					isXS={isXS}
+					className="flex flex-col justify-center"
+					ariaLabel={`View ${title}`}
+				>
 					<h3
 						className={cn(
 							"font-extralight leading-tight child-project text-[20px]",
@@ -35,7 +38,7 @@ const ProjectFolderCard = ({ title, link, index }: ProjectFolderCardProps) => {
 					>
 						{title}
 					</h3>
-				</div>
+				</LinkOrDiv>
 				<Link
 					className={cn(
 						"font-extralight hidden xs:grid place-items-center border px-5 py-2 hover:underline",
@@ -46,7 +49,7 @@ const ProjectFolderCard = ({ title, link, index }: ProjectFolderCardProps) => {
 				>
 					View
 				</Link>
-			</LinkOrDiv>
+			</div>
 		</m.div>
 	);
 };
